@@ -19,9 +19,7 @@ import (
 	"strings"
 	"unsafe"
 )
-// x-DQHASM 
-
-// #cgo CFLAGS: -std=c99 -O3 -fomit-frame-pointer 
+// #cgo CFLAGS: -std=c99 -O3 -fomit-frame-pointer -DQHASM 
 // #cgo LDFLAGS: -lm
 /*
 #include "optate.h"

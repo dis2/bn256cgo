@@ -330,6 +330,8 @@ void curvepoint_fp_neg(curvepoint_fp_t rop, const curvepoint_fp_t op)
 // Transform to Affine Coordinates (z=1)
 void curvepoint_fp_makeaffine(curvepoint_fp_t point)
 {
+  if (fpe_isone(point->m_z))
+	  return;
   fpe_t tfpe1;
   fpe_invert(tfpe1, point->m_z);
   fpe_mul(point->m_x, point->m_x, tfpe1);

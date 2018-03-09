@@ -1,3 +1,5 @@
+#include "cc.h"
+
 # File:   dclxvi-20130329/consts.s
 # Author: Ruben Niederhagen, Peter Schwabe
 # Public Domain

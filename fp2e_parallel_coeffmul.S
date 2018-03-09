@@ -1,3 +1,4 @@
+#include "cc.h"
 # File:   dclxvi-20130329/fp2e_parallel_coeffmul.s
 # Author: Ruben Niederhagen, Peter Schwabe
 # Public Domain
@@ -33,8 +34,8 @@ sub %r11,%rsp
 
 # qhasm: rp = &playground
 # asm 1: leaq <playground=stack6144#1,>rp=int64#4
-# asm 2: leaq <playground=0(%rsp),>rp=%rcx
-leaq 0(%rsp),%rcx
+# asm 2: leaq <playground=0(%rsp),>rp=RCX
+leaq 0(%rsp),RCX
 
 # qhasm: int64 c0
 
@@ -215,13 +216,13 @@ movdqa SIX_SIX,%xmm0
 
 # qhasm: b11 = *(int128 *)(op2 + 176)
 # asm 1: movdqa 176(<op2=int64#3),>b11=int6464#2
-# asm 2: movdqa 176(<op2=%rdx),>b11=%xmm1
-movdqa 176(%rdx),%xmm1
+# asm 2: movdqa 176(<op2=RDX),>b11=%xmm1
+movdqa 176(RDX),%xmm1
 
 # qhasm: r11 = *(int128 *)(op1 + 0)
 # asm 1: movdqa 0(<op1=int64#2),>r11=int6464#3
-# asm 2: movdqa 0(<op1=%rsi),>r11=%xmm2
-movdqa 0(%rsi),%xmm2
+# asm 2: movdqa 0(<op1=RSI),>r11=%xmm2
+movdqa 0(RSI),%xmm2
 
 # qhasm: r0 = r11
 # asm 1: movdqa <r11=int6464#3,>r0=int6464#4
@@ -230,8 +231,8 @@ movdqa %xmm2,%xmm3
 
 # qhasm: float6464 r0 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<r0=int6464#4
-# asm 2: mulpd 0(<op2=%rdx),<r0=%xmm3
-mulpd 0(%rdx),%xmm3
+# asm 2: mulpd 0(<op2=RDX),<r0=%xmm3
+mulpd 0(RDX),%xmm3
 
 # qhasm: r1 = r11
 # asm 1: movdqa <r11=int6464#3,>r1=int6464#5
@@ -240,8 +241,8 @@ movdqa %xmm2,%xmm4
 
 # qhasm: float6464 r1 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<r1=int6464#5
-# asm 2: mulpd 16(<op2=%rdx),<r1=%xmm4
-mulpd 16(%rdx),%xmm4
+# asm 2: mulpd 16(<op2=RDX),<r1=%xmm4
+mulpd 16(RDX),%xmm4
 
 # qhasm: r2 = r11
 # asm 1: movdqa <r11=int6464#3,>r2=int6464#6
@@ -250,8 +251,8 @@ movdqa %xmm2,%xmm5
 
 # qhasm: float6464 r2 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<r2=int6464#6
-# asm 2: mulpd 32(<op2=%rdx),<r2=%xmm5
-mulpd 32(%rdx),%xmm5
+# asm 2: mulpd 32(<op2=RDX),<r2=%xmm5
+mulpd 32(RDX),%xmm5
 
 # qhasm: r3 = r11
 # asm 1: movdqa <r11=int6464#3,>r3=int6464#7
@@ -260,8 +261,8 @@ movdqa %xmm2,%xmm6
 
 # qhasm: float6464 r3 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<r3=int6464#7
-# asm 2: mulpd 48(<op2=%rdx),<r3=%xmm6
-mulpd 48(%rdx),%xmm6
+# asm 2: mulpd 48(<op2=RDX),<r3=%xmm6
+mulpd 48(RDX),%xmm6
 
 # qhasm: r4 = r11
 # asm 1: movdqa <r11=int6464#3,>r4=int6464#8
@@ -270,8 +271,8 @@ movdqa %xmm2,%xmm7
 
 # qhasm: float6464 r4 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<r4=int6464#8
-# asm 2: mulpd 64(<op2=%rdx),<r4=%xmm7
-mulpd 64(%rdx),%xmm7
+# asm 2: mulpd 64(<op2=RDX),<r4=%xmm7
+mulpd 64(RDX),%xmm7
 
 # qhasm: r5 = r11
 # asm 1: movdqa <r11=int6464#3,>r5=int6464#9
@@ -280,8 +281,8 @@ movdqa %xmm2,%xmm8
 
 # qhasm: float6464 r5 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<r5=int6464#9
-# asm 2: mulpd 80(<op2=%rdx),<r5=%xmm8
-mulpd 80(%rdx),%xmm8
+# asm 2: mulpd 80(<op2=RDX),<r5=%xmm8
+mulpd 80(RDX),%xmm8
 
 # qhasm: r6 = r11
 # asm 1: movdqa <r11=int6464#3,>r6=int6464#10
@@ -290,8 +291,8 @@ movdqa %xmm2,%xmm9
 
 # qhasm: float6464 r6 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<r6=int6464#10
-# asm 2: mulpd 96(<op2=%rdx),<r6=%xmm9
-mulpd 96(%rdx),%xmm9
+# asm 2: mulpd 96(<op2=RDX),<r6=%xmm9
+mulpd 96(RDX),%xmm9
 
 # qhasm: r7 = r11
 # asm 1: movdqa <r11=int6464#3,>r7=int6464#11
@@ -300,8 +301,8 @@ movdqa %xmm2,%xmm10
 
 # qhasm: float6464 r7 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<r7=int6464#11
-# asm 2: mulpd 112(<op2=%rdx),<r7=%xmm10
-mulpd 112(%rdx),%xmm10
+# asm 2: mulpd 112(<op2=RDX),<r7=%xmm10
+mulpd 112(RDX),%xmm10
 
 # qhasm: r8 = r11
 # asm 1: movdqa <r11=int6464#3,>r8=int6464#12
@@ -310,8 +311,8 @@ movdqa %xmm2,%xmm11
 
 # qhasm: float6464 r8 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<r8=int6464#12
-# asm 2: mulpd 128(<op2=%rdx),<r8=%xmm11
-mulpd 128(%rdx),%xmm11
+# asm 2: mulpd 128(<op2=RDX),<r8=%xmm11
+mulpd 128(RDX),%xmm11
 
 # qhasm: r9 = r11
 # asm 1: movdqa <r11=int6464#3,>r9=int6464#13
@@ -320,8 +321,8 @@ movdqa %xmm2,%xmm12
 
 # qhasm: float6464 r9 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<r9=int6464#13
-# asm 2: mulpd 144(<op2=%rdx),<r9=%xmm12
-mulpd 144(%rdx),%xmm12
+# asm 2: mulpd 144(<op2=RDX),<r9=%xmm12
+mulpd 144(RDX),%xmm12
 
 # qhasm: r10 = r11
 # asm 1: movdqa <r11=int6464#3,>r10=int6464#14
@@ -330,8 +331,8 @@ movdqa %xmm2,%xmm13
 
 # qhasm: float6464 r10 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<r10=int6464#14
-# asm 2: mulpd 160(<op2=%rdx),<r10=%xmm13
-mulpd 160(%rdx),%xmm13
+# asm 2: mulpd 160(<op2=RDX),<r10=%xmm13
+mulpd 160(RDX),%xmm13
 
 # qhasm: float6464 r11 *= b11
 # asm 1: mulpd <b11=int6464#2,<r11=int6464#3
@@ -340,13 +341,13 @@ mulpd %xmm1,%xmm2
 
 # qhasm: *(int128 *)(rp + 0) = r0
 # asm 1: movdqa <r0=int6464#4,0(<rp=int64#4)
-# asm 2: movdqa <r0=%xmm3,0(<rp=%rcx)
-movdqa %xmm3,0(%rcx)
+# asm 2: movdqa <r0=%xmm3,0(<rp=RCX)
+movdqa %xmm3,0(RCX)
 
 # qhasm: ab1 = *(int128 *)(op1 + 16)
 # asm 1: movdqa 16(<op1=int64#2),>ab1=int6464#4
-# asm 2: movdqa 16(<op1=%rsi),>ab1=%xmm3
-movdqa 16(%rsi),%xmm3
+# asm 2: movdqa 16(<op1=RSI),>ab1=%xmm3
+movdqa 16(RSI),%xmm3
 
 # qhasm: r12 = ab1
 # asm 1: movdqa <ab1=int6464#4,>r12=int6464#15
@@ -365,8 +366,8 @@ movdqa %xmm3,%xmm15
 
 # qhasm: float6464 t1 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t1=int6464#16
-# asm 2: mulpd 0(<op2=%rdx),<t1=%xmm15
-mulpd 0(%rdx),%xmm15
+# asm 2: mulpd 0(<op2=RDX),<t1=%xmm15
+mulpd 0(RDX),%xmm15
 
 # qhasm: float6464 r1 +=t1
 # asm 1: addpd <t1=int6464#16,<r1=int6464#5
@@ -375,8 +376,8 @@ addpd %xmm15,%xmm4
 
 # qhasm: float6464 ab1 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<ab1=int6464#4
-# asm 2: mulpd 96(<op2=%rdx),<ab1=%xmm3
-mulpd 96(%rdx),%xmm3
+# asm 2: mulpd 96(<op2=RDX),<ab1=%xmm3
+mulpd 96(RDX),%xmm3
 
 # qhasm: float6464 r7 +=ab1
 # asm 1: addpd <ab1=int6464#4,<r7=int6464#11
@@ -390,8 +391,8 @@ movdqa %xmm14,%xmm3
 
 # qhasm: float6464 t2 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t2=int6464#4
-# asm 2: mulpd 16(<op2=%rdx),<t2=%xmm3
-mulpd 16(%rdx),%xmm3
+# asm 2: mulpd 16(<op2=RDX),<t2=%xmm3
+mulpd 16(RDX),%xmm3
 
 # qhasm: float6464 r2 +=t2
 # asm 1: addpd <t2=int6464#4,<r2=int6464#6
@@ -405,8 +406,8 @@ movdqa %xmm14,%xmm3
 
 # qhasm: float6464 t3 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t3=int6464#4
-# asm 2: mulpd 32(<op2=%rdx),<t3=%xmm3
-mulpd 32(%rdx),%xmm3
+# asm 2: mulpd 32(<op2=RDX),<t3=%xmm3
+mulpd 32(RDX),%xmm3
 
 # qhasm: float6464 r3 +=t3
 # asm 1: addpd <t3=int6464#4,<r3=int6464#7
@@ -420,8 +421,8 @@ movdqa %xmm14,%xmm3
 
 # qhasm: float6464 t4 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t4=int6464#4
-# asm 2: mulpd 48(<op2=%rdx),<t4=%xmm3
-mulpd 48(%rdx),%xmm3
+# asm 2: mulpd 48(<op2=RDX),<t4=%xmm3
+mulpd 48(RDX),%xmm3
 
 # qhasm: float6464 r4 +=t4
 # asm 1: addpd <t4=int6464#4,<r4=int6464#8
@@ -435,8 +436,8 @@ movdqa %xmm14,%xmm3
 
 # qhasm: float6464 t5 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t5=int6464#4
-# asm 2: mulpd 64(<op2=%rdx),<t5=%xmm3
-mulpd 64(%rdx),%xmm3
+# asm 2: mulpd 64(<op2=RDX),<t5=%xmm3
+mulpd 64(RDX),%xmm3
 
 # qhasm: float6464 r5 +=t5
 # asm 1: addpd <t5=int6464#4,<r5=int6464#9
@@ -450,8 +451,8 @@ movdqa %xmm14,%xmm3
 
 # qhasm: float6464 t6 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t6=int6464#4
-# asm 2: mulpd 80(<op2=%rdx),<t6=%xmm3
-mulpd 80(%rdx),%xmm3
+# asm 2: mulpd 80(<op2=RDX),<t6=%xmm3
+mulpd 80(RDX),%xmm3
 
 # qhasm: float6464 r6 +=t6
 # asm 1: addpd <t6=int6464#4,<r6=int6464#10
@@ -465,8 +466,8 @@ movdqa %xmm14,%xmm3
 
 # qhasm: float6464 t8 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<t8=int6464#4
-# asm 2: mulpd 112(<op2=%rdx),<t8=%xmm3
-mulpd 112(%rdx),%xmm3
+# asm 2: mulpd 112(<op2=RDX),<t8=%xmm3
+mulpd 112(RDX),%xmm3
 
 # qhasm: float6464 r8 +=t8
 # asm 1: addpd <t8=int6464#4,<r8=int6464#12
@@ -480,8 +481,8 @@ movdqa %xmm14,%xmm3
 
 # qhasm: float6464 t9 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<t9=int6464#4
-# asm 2: mulpd 128(<op2=%rdx),<t9=%xmm3
-mulpd 128(%rdx),%xmm3
+# asm 2: mulpd 128(<op2=RDX),<t9=%xmm3
+mulpd 128(RDX),%xmm3
 
 # qhasm: float6464 r9 +=t9
 # asm 1: addpd <t9=int6464#4,<r9=int6464#13
@@ -495,8 +496,8 @@ movdqa %xmm14,%xmm3
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<t10=int6464#4
-# asm 2: mulpd 144(<op2=%rdx),<t10=%xmm3
-mulpd 144(%rdx),%xmm3
+# asm 2: mulpd 144(<op2=RDX),<t10=%xmm3
+mulpd 144(RDX),%xmm3
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#4,<r10=int6464#14
@@ -510,8 +511,8 @@ movdqa %xmm14,%xmm3
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<t11=int6464#4
-# asm 2: mulpd 160(<op2=%rdx),<t11=%xmm3
-mulpd 160(%rdx),%xmm3
+# asm 2: mulpd 160(<op2=RDX),<t11=%xmm3
+mulpd 160(RDX),%xmm3
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#4,<r11=int6464#3
@@ -525,13 +526,13 @@ mulpd %xmm1,%xmm14
 
 # qhasm: *(int128 *)(rp + 16) = r1
 # asm 1: movdqa <r1=int6464#5,16(<rp=int64#4)
-# asm 2: movdqa <r1=%xmm4,16(<rp=%rcx)
-movdqa %xmm4,16(%rcx)
+# asm 2: movdqa <r1=%xmm4,16(<rp=RCX)
+movdqa %xmm4,16(RCX)
 
 # qhasm: r13 = *(int128 *)(op1 + 32)
 # asm 1: movdqa 32(<op1=int64#2),>r13=int6464#4
-# asm 2: movdqa 32(<op1=%rsi),>r13=%xmm3
-movdqa 32(%rsi),%xmm3
+# asm 2: movdqa 32(<op1=RSI),>r13=%xmm3
+movdqa 32(RSI),%xmm3
 
 # qhasm: ab2six = r13
 # asm 1: movdqa <r13=int6464#4,>ab2six=int6464#5
@@ -550,8 +551,8 @@ movdqa %xmm3,%xmm15
 
 # qhasm: float6464 t2 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t2=int6464#16
-# asm 2: mulpd 0(<op2=%rdx),<t2=%xmm15
-mulpd 0(%rdx),%xmm15
+# asm 2: mulpd 0(<op2=RDX),<t2=%xmm15
+mulpd 0(RDX),%xmm15
 
 # qhasm: float6464 r2 +=t2
 # asm 1: addpd <t2=int6464#16,<r2=int6464#6
@@ -565,8 +566,8 @@ movdqa %xmm3,%xmm15
 
 # qhasm: float6464 t7 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t7=int6464#16
-# asm 2: mulpd 80(<op2=%rdx),<t7=%xmm15
-mulpd 80(%rdx),%xmm15
+# asm 2: mulpd 80(<op2=RDX),<t7=%xmm15
+mulpd 80(RDX),%xmm15
 
 # qhasm: float6464 r7 +=t7
 # asm 1: addpd <t7=int6464#16,<r7=int6464#11
@@ -580,8 +581,8 @@ movdqa %xmm3,%xmm15
 
 # qhasm: float6464 t8 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<t8=int6464#16
-# asm 2: mulpd 96(<op2=%rdx),<t8=%xmm15
-mulpd 96(%rdx),%xmm15
+# asm 2: mulpd 96(<op2=RDX),<t8=%xmm15
+mulpd 96(RDX),%xmm15
 
 # qhasm: float6464 r8 +=t8
 # asm 1: addpd <t8=int6464#16,<r8=int6464#12
@@ -600,8 +601,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t3 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t3=int6464#16
-# asm 2: mulpd 16(<op2=%rdx),<t3=%xmm15
-mulpd 16(%rdx),%xmm15
+# asm 2: mulpd 16(<op2=RDX),<t3=%xmm15
+mulpd 16(RDX),%xmm15
 
 # qhasm: float6464 r3 +=t3
 # asm 1: addpd <t3=int6464#16,<r3=int6464#7
@@ -615,8 +616,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t4 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t4=int6464#16
-# asm 2: mulpd 32(<op2=%rdx),<t4=%xmm15
-mulpd 32(%rdx),%xmm15
+# asm 2: mulpd 32(<op2=RDX),<t4=%xmm15
+mulpd 32(RDX),%xmm15
 
 # qhasm: float6464 r4 +=t4
 # asm 1: addpd <t4=int6464#16,<r4=int6464#8
@@ -630,8 +631,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t5 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t5=int6464#16
-# asm 2: mulpd 48(<op2=%rdx),<t5=%xmm15
-mulpd 48(%rdx),%xmm15
+# asm 2: mulpd 48(<op2=RDX),<t5=%xmm15
+mulpd 48(RDX),%xmm15
 
 # qhasm: float6464 r5 +=t5
 # asm 1: addpd <t5=int6464#16,<r5=int6464#9
@@ -645,8 +646,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t6 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t6=int6464#16
-# asm 2: mulpd 64(<op2=%rdx),<t6=%xmm15
-mulpd 64(%rdx),%xmm15
+# asm 2: mulpd 64(<op2=RDX),<t6=%xmm15
+mulpd 64(RDX),%xmm15
 
 # qhasm: float6464 r6 +=t6
 # asm 1: addpd <t6=int6464#16,<r6=int6464#10
@@ -660,8 +661,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t9 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<t9=int6464#16
-# asm 2: mulpd 112(<op2=%rdx),<t9=%xmm15
-mulpd 112(%rdx),%xmm15
+# asm 2: mulpd 112(<op2=RDX),<t9=%xmm15
+mulpd 112(RDX),%xmm15
 
 # qhasm: float6464 r9 +=t9
 # asm 1: addpd <t9=int6464#16,<r9=int6464#13
@@ -675,8 +676,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<t10=int6464#16
-# asm 2: mulpd 128(<op2=%rdx),<t10=%xmm15
-mulpd 128(%rdx),%xmm15
+# asm 2: mulpd 128(<op2=RDX),<t10=%xmm15
+mulpd 128(RDX),%xmm15
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#16,<r10=int6464#14
@@ -690,8 +691,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<t11=int6464#16
-# asm 2: mulpd 144(<op2=%rdx),<t11=%xmm15
-mulpd 144(%rdx),%xmm15
+# asm 2: mulpd 144(<op2=RDX),<t11=%xmm15
+mulpd 144(RDX),%xmm15
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#16,<r11=int6464#3
@@ -700,8 +701,8 @@ addpd %xmm15,%xmm2
 
 # qhasm: float6464 ab2six *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<ab2six=int6464#5
-# asm 2: mulpd 160(<op2=%rdx),<ab2six=%xmm4
-mulpd 160(%rdx),%xmm4
+# asm 2: mulpd 160(<op2=RDX),<ab2six=%xmm4
+mulpd 160(RDX),%xmm4
 
 # qhasm: float6464 r12 += ab2six
 # asm 1: addpd <ab2six=int6464#5,<r12=int6464#15
@@ -710,13 +711,13 @@ addpd %xmm4,%xmm14
 
 # qhasm: *(int128 *)(rp + 32) = r2
 # asm 1: movdqa <r2=int6464#6,32(<rp=int64#4)
-# asm 2: movdqa <r2=%xmm5,32(<rp=%rcx)
-movdqa %xmm5,32(%rcx)
+# asm 2: movdqa <r2=%xmm5,32(<rp=RCX)
+movdqa %xmm5,32(RCX)
 
 # qhasm: r14 = *(int128 *)(op1 + 48)
 # asm 1: movdqa 48(<op1=int64#2),>r14=int6464#5
-# asm 2: movdqa 48(<op1=%rsi),>r14=%xmm4
-movdqa 48(%rsi),%xmm4
+# asm 2: movdqa 48(<op1=RSI),>r14=%xmm4
+movdqa 48(RSI),%xmm4
 
 # qhasm: ab3six = r14
 # asm 1: movdqa <r14=int6464#5,>ab3six=int6464#6
@@ -735,8 +736,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t3 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t3=int6464#16
-# asm 2: mulpd 0(<op2=%rdx),<t3=%xmm15
-mulpd 0(%rdx),%xmm15
+# asm 2: mulpd 0(<op2=RDX),<t3=%xmm15
+mulpd 0(RDX),%xmm15
 
 # qhasm: float6464 r3 +=t3
 # asm 1: addpd <t3=int6464#16,<r3=int6464#7
@@ -750,8 +751,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t7 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t7=int6464#16
-# asm 2: mulpd 64(<op2=%rdx),<t7=%xmm15
-mulpd 64(%rdx),%xmm15
+# asm 2: mulpd 64(<op2=RDX),<t7=%xmm15
+mulpd 64(RDX),%xmm15
 
 # qhasm: float6464 r7 +=t7
 # asm 1: addpd <t7=int6464#16,<r7=int6464#11
@@ -765,8 +766,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t8 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t8=int6464#16
-# asm 2: mulpd 80(<op2=%rdx),<t8=%xmm15
-mulpd 80(%rdx),%xmm15
+# asm 2: mulpd 80(<op2=RDX),<t8=%xmm15
+mulpd 80(RDX),%xmm15
 
 # qhasm: float6464 r8 +=t8
 # asm 1: addpd <t8=int6464#16,<r8=int6464#12
@@ -780,8 +781,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t9 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<t9=int6464#16
-# asm 2: mulpd 96(<op2=%rdx),<t9=%xmm15
-mulpd 96(%rdx),%xmm15
+# asm 2: mulpd 96(<op2=RDX),<t9=%xmm15
+mulpd 96(RDX),%xmm15
 
 # qhasm: float6464 r9 +=t9
 # asm 1: addpd <t9=int6464#16,<r9=int6464#13
@@ -795,8 +796,8 @@ movdqa %xmm4,%xmm15
 
 # qhasm: float6464 t13 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<t13=int6464#16
-# asm 2: mulpd 160(<op2=%rdx),<t13=%xmm15
-mulpd 160(%rdx),%xmm15
+# asm 2: mulpd 160(<op2=RDX),<t13=%xmm15
+mulpd 160(RDX),%xmm15
 
 # qhasm: float6464 r13 +=t13
 # asm 1: addpd <t13=int6464#16,<r13=int6464#4
@@ -815,8 +816,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t4 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t4=int6464#16
-# asm 2: mulpd 16(<op2=%rdx),<t4=%xmm15
-mulpd 16(%rdx),%xmm15
+# asm 2: mulpd 16(<op2=RDX),<t4=%xmm15
+mulpd 16(RDX),%xmm15
 
 # qhasm: float6464 r4 +=t4
 # asm 1: addpd <t4=int6464#16,<r4=int6464#8
@@ -830,8 +831,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t5 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t5=int6464#16
-# asm 2: mulpd 32(<op2=%rdx),<t5=%xmm15
-mulpd 32(%rdx),%xmm15
+# asm 2: mulpd 32(<op2=RDX),<t5=%xmm15
+mulpd 32(RDX),%xmm15
 
 # qhasm: float6464 r5 +=t5
 # asm 1: addpd <t5=int6464#16,<r5=int6464#9
@@ -845,8 +846,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t6 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t6=int6464#16
-# asm 2: mulpd 48(<op2=%rdx),<t6=%xmm15
-mulpd 48(%rdx),%xmm15
+# asm 2: mulpd 48(<op2=RDX),<t6=%xmm15
+mulpd 48(RDX),%xmm15
 
 # qhasm: float6464 r6 +=t6
 # asm 1: addpd <t6=int6464#16,<r6=int6464#10
@@ -860,8 +861,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<t10=int6464#16
-# asm 2: mulpd 112(<op2=%rdx),<t10=%xmm15
-mulpd 112(%rdx),%xmm15
+# asm 2: mulpd 112(<op2=RDX),<t10=%xmm15
+mulpd 112(RDX),%xmm15
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#16,<r10=int6464#14
@@ -875,8 +876,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<t11=int6464#16
-# asm 2: mulpd 128(<op2=%rdx),<t11=%xmm15
-mulpd 128(%rdx),%xmm15
+# asm 2: mulpd 128(<op2=RDX),<t11=%xmm15
+mulpd 128(RDX),%xmm15
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#16,<r11=int6464#3
@@ -885,8 +886,8 @@ addpd %xmm15,%xmm2
 
 # qhasm: float6464 ab3six *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<ab3six=int6464#6
-# asm 2: mulpd 144(<op2=%rdx),<ab3six=%xmm5
-mulpd 144(%rdx),%xmm5
+# asm 2: mulpd 144(<op2=RDX),<ab3six=%xmm5
+mulpd 144(RDX),%xmm5
 
 # qhasm: float6464 r12 += ab3six
 # asm 1: addpd <ab3six=int6464#6,<r12=int6464#15
@@ -895,13 +896,13 @@ addpd %xmm5,%xmm14
 
 # qhasm: *(int128 *)(rp + 48) = r3
 # asm 1: movdqa <r3=int6464#7,48(<rp=int64#4)
-# asm 2: movdqa <r3=%xmm6,48(<rp=%rcx)
-movdqa %xmm6,48(%rcx)
+# asm 2: movdqa <r3=%xmm6,48(<rp=RCX)
+movdqa %xmm6,48(RCX)
 
 # qhasm: r15 = *(int128 *)(op1 + 64)
 # asm 1: movdqa 64(<op1=int64#2),>r15=int6464#6
-# asm 2: movdqa 64(<op1=%rsi),>r15=%xmm5
-movdqa 64(%rsi),%xmm5
+# asm 2: movdqa 64(<op1=RSI),>r15=%xmm5
+movdqa 64(RSI),%xmm5
 
 # qhasm: ab4six = r15
 # asm 1: movdqa <r15=int6464#6,>ab4six=int6464#7
@@ -920,8 +921,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t4 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t4=int6464#16
-# asm 2: mulpd 0(<op2=%rdx),<t4=%xmm15
-mulpd 0(%rdx),%xmm15
+# asm 2: mulpd 0(<op2=RDX),<t4=%xmm15
+mulpd 0(RDX),%xmm15
 
 # qhasm: float6464 r4 +=t4
 # asm 1: addpd <t4=int6464#16,<r4=int6464#8
@@ -935,8 +936,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t7 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t7=int6464#16
-# asm 2: mulpd 48(<op2=%rdx),<t7=%xmm15
-mulpd 48(%rdx),%xmm15
+# asm 2: mulpd 48(<op2=RDX),<t7=%xmm15
+mulpd 48(RDX),%xmm15
 
 # qhasm: float6464 r7 +=t7
 # asm 1: addpd <t7=int6464#16,<r7=int6464#11
@@ -950,8 +951,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t8 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t8=int6464#16
-# asm 2: mulpd 64(<op2=%rdx),<t8=%xmm15
-mulpd 64(%rdx),%xmm15
+# asm 2: mulpd 64(<op2=RDX),<t8=%xmm15
+mulpd 64(RDX),%xmm15
 
 # qhasm: float6464 r8 +=t8
 # asm 1: addpd <t8=int6464#16,<r8=int6464#12
@@ -965,8 +966,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t9 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t9=int6464#16
-# asm 2: mulpd 80(<op2=%rdx),<t9=%xmm15
-mulpd 80(%rdx),%xmm15
+# asm 2: mulpd 80(<op2=RDX),<t9=%xmm15
+mulpd 80(RDX),%xmm15
 
 # qhasm: float6464 r9 +=t9
 # asm 1: addpd <t9=int6464#16,<r9=int6464#13
@@ -980,8 +981,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<t10=int6464#16
-# asm 2: mulpd 96(<op2=%rdx),<t10=%xmm15
-mulpd 96(%rdx),%xmm15
+# asm 2: mulpd 96(<op2=RDX),<t10=%xmm15
+mulpd 96(RDX),%xmm15
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#16,<r10=int6464#14
@@ -995,8 +996,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t13 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<t13=int6464#16
-# asm 2: mulpd 144(<op2=%rdx),<t13=%xmm15
-mulpd 144(%rdx),%xmm15
+# asm 2: mulpd 144(<op2=RDX),<t13=%xmm15
+mulpd 144(RDX),%xmm15
 
 # qhasm: float6464 r13 +=t13
 # asm 1: addpd <t13=int6464#16,<r13=int6464#4
@@ -1010,8 +1011,8 @@ movdqa %xmm5,%xmm15
 
 # qhasm: float6464 t14 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<t14=int6464#16
-# asm 2: mulpd 160(<op2=%rdx),<t14=%xmm15
-mulpd 160(%rdx),%xmm15
+# asm 2: mulpd 160(<op2=RDX),<t14=%xmm15
+mulpd 160(RDX),%xmm15
 
 # qhasm: float6464 r14 +=t14
 # asm 1: addpd <t14=int6464#16,<r14=int6464#5
@@ -1030,8 +1031,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t5 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t5=int6464#16
-# asm 2: mulpd 16(<op2=%rdx),<t5=%xmm15
-mulpd 16(%rdx),%xmm15
+# asm 2: mulpd 16(<op2=RDX),<t5=%xmm15
+mulpd 16(RDX),%xmm15
 
 # qhasm: float6464 r5 +=t5
 # asm 1: addpd <t5=int6464#16,<r5=int6464#9
@@ -1045,8 +1046,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t6 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t6=int6464#16
-# asm 2: mulpd 32(<op2=%rdx),<t6=%xmm15
-mulpd 32(%rdx),%xmm15
+# asm 2: mulpd 32(<op2=RDX),<t6=%xmm15
+mulpd 32(RDX),%xmm15
 
 # qhasm: float6464 r6 +=t6
 # asm 1: addpd <t6=int6464#16,<r6=int6464#10
@@ -1060,8 +1061,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<t11=int6464#16
-# asm 2: mulpd 112(<op2=%rdx),<t11=%xmm15
-mulpd 112(%rdx),%xmm15
+# asm 2: mulpd 112(<op2=RDX),<t11=%xmm15
+mulpd 112(RDX),%xmm15
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#16,<r11=int6464#3
@@ -1070,8 +1071,8 @@ addpd %xmm15,%xmm2
 
 # qhasm: float6464 ab4six *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<ab4six=int6464#7
-# asm 2: mulpd 128(<op2=%rdx),<ab4six=%xmm6
-mulpd 128(%rdx),%xmm6
+# asm 2: mulpd 128(<op2=RDX),<ab4six=%xmm6
+mulpd 128(RDX),%xmm6
 
 # qhasm: float6464 r12 += ab4six
 # asm 1: addpd <ab4six=int6464#7,<r12=int6464#15
@@ -1080,13 +1081,13 @@ addpd %xmm6,%xmm14
 
 # qhasm: *(int128 *)(rp + 64) = r4
 # asm 1: movdqa <r4=int6464#8,64(<rp=int64#4)
-# asm 2: movdqa <r4=%xmm7,64(<rp=%rcx)
-movdqa %xmm7,64(%rcx)
+# asm 2: movdqa <r4=%xmm7,64(<rp=RCX)
+movdqa %xmm7,64(RCX)
 
 # qhasm: r16 = *(int128 *)(op1 + 80)
 # asm 1: movdqa 80(<op1=int64#2),>r16=int6464#7
-# asm 2: movdqa 80(<op1=%rsi),>r16=%xmm6
-movdqa 80(%rsi),%xmm6
+# asm 2: movdqa 80(<op1=RSI),>r16=%xmm6
+movdqa 80(RSI),%xmm6
 
 # qhasm: ab5six = r16
 # asm 1: movdqa <r16=int6464#7,>ab5six=int6464#8
@@ -1105,8 +1106,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t5 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t5=int6464#16
-# asm 2: mulpd 0(<op2=%rdx),<t5=%xmm15
-mulpd 0(%rdx),%xmm15
+# asm 2: mulpd 0(<op2=RDX),<t5=%xmm15
+mulpd 0(RDX),%xmm15
 
 # qhasm: float6464 r5 +=t5
 # asm 1: addpd <t5=int6464#16,<r5=int6464#9
@@ -1120,8 +1121,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t7 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t7=int6464#16
-# asm 2: mulpd 32(<op2=%rdx),<t7=%xmm15
-mulpd 32(%rdx),%xmm15
+# asm 2: mulpd 32(<op2=RDX),<t7=%xmm15
+mulpd 32(RDX),%xmm15
 
 # qhasm: float6464 r7 +=t7
 # asm 1: addpd <t7=int6464#16,<r7=int6464#11
@@ -1135,8 +1136,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t8 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t8=int6464#16
-# asm 2: mulpd 48(<op2=%rdx),<t8=%xmm15
-mulpd 48(%rdx),%xmm15
+# asm 2: mulpd 48(<op2=RDX),<t8=%xmm15
+mulpd 48(RDX),%xmm15
 
 # qhasm: float6464 r8 +=t8
 # asm 1: addpd <t8=int6464#16,<r8=int6464#12
@@ -1150,8 +1151,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t9 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t9=int6464#16
-# asm 2: mulpd 64(<op2=%rdx),<t9=%xmm15
-mulpd 64(%rdx),%xmm15
+# asm 2: mulpd 64(<op2=RDX),<t9=%xmm15
+mulpd 64(RDX),%xmm15
 
 # qhasm: float6464 r9 +=t9
 # asm 1: addpd <t9=int6464#16,<r9=int6464#13
@@ -1165,8 +1166,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t10=int6464#16
-# asm 2: mulpd 80(<op2=%rdx),<t10=%xmm15
-mulpd 80(%rdx),%xmm15
+# asm 2: mulpd 80(<op2=RDX),<t10=%xmm15
+mulpd 80(RDX),%xmm15
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#16,<r10=int6464#14
@@ -1180,8 +1181,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<t11=int6464#16
-# asm 2: mulpd 96(<op2=%rdx),<t11=%xmm15
-mulpd 96(%rdx),%xmm15
+# asm 2: mulpd 96(<op2=RDX),<t11=%xmm15
+mulpd 96(RDX),%xmm15
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#16,<r11=int6464#3
@@ -1195,8 +1196,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t13 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<t13=int6464#16
-# asm 2: mulpd 128(<op2=%rdx),<t13=%xmm15
-mulpd 128(%rdx),%xmm15
+# asm 2: mulpd 128(<op2=RDX),<t13=%xmm15
+mulpd 128(RDX),%xmm15
 
 # qhasm: float6464 r13 +=t13
 # asm 1: addpd <t13=int6464#16,<r13=int6464#4
@@ -1210,8 +1211,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t14 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<t14=int6464#16
-# asm 2: mulpd 144(<op2=%rdx),<t14=%xmm15
-mulpd 144(%rdx),%xmm15
+# asm 2: mulpd 144(<op2=RDX),<t14=%xmm15
+mulpd 144(RDX),%xmm15
 
 # qhasm: float6464 r14 +=t14
 # asm 1: addpd <t14=int6464#16,<r14=int6464#5
@@ -1225,8 +1226,8 @@ movdqa %xmm6,%xmm15
 
 # qhasm: float6464 t15 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<t15=int6464#16
-# asm 2: mulpd 160(<op2=%rdx),<t15=%xmm15
-mulpd 160(%rdx),%xmm15
+# asm 2: mulpd 160(<op2=RDX),<t15=%xmm15
+mulpd 160(RDX),%xmm15
 
 # qhasm: float6464 r15 +=t15
 # asm 1: addpd <t15=int6464#16,<r15=int6464#6
@@ -1245,8 +1246,8 @@ movdqa %xmm7,%xmm15
 
 # qhasm: float6464 t6 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t6=int6464#16
-# asm 2: mulpd 16(<op2=%rdx),<t6=%xmm15
-mulpd 16(%rdx),%xmm15
+# asm 2: mulpd 16(<op2=RDX),<t6=%xmm15
+mulpd 16(RDX),%xmm15
 
 # qhasm: float6464 r6 +=t6
 # asm 1: addpd <t6=int6464#16,<r6=int6464#10
@@ -1255,8 +1256,8 @@ addpd %xmm15,%xmm9
 
 # qhasm: float6464 ab5six *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<ab5six=int6464#8
-# asm 2: mulpd 112(<op2=%rdx),<ab5six=%xmm7
-mulpd 112(%rdx),%xmm7
+# asm 2: mulpd 112(<op2=RDX),<ab5six=%xmm7
+mulpd 112(RDX),%xmm7
 
 # qhasm: float6464 r12 += ab5six
 # asm 1: addpd <ab5six=int6464#8,<r12=int6464#15
@@ -1265,13 +1266,13 @@ addpd %xmm7,%xmm14
 
 # qhasm: *(int128 *)(rp + 80) = r5
 # asm 1: movdqa <r5=int6464#9,80(<rp=int64#4)
-# asm 2: movdqa <r5=%xmm8,80(<rp=%rcx)
-movdqa %xmm8,80(%rcx)
+# asm 2: movdqa <r5=%xmm8,80(<rp=RCX)
+movdqa %xmm8,80(RCX)
 
 # qhasm: r17 = *(int128 *)(op1 + 96)
 # asm 1: movdqa 96(<op1=int64#2),>r17=int6464#8
-# asm 2: movdqa 96(<op1=%rsi),>r17=%xmm7
-movdqa 96(%rsi),%xmm7
+# asm 2: movdqa 96(<op1=RSI),>r17=%xmm7
+movdqa 96(RSI),%xmm7
 
 # qhasm: t6 = r17
 # asm 1: movdqa <r17=int6464#8,>t6=int6464#9
@@ -1280,8 +1281,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t6 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t6=int6464#9
-# asm 2: mulpd 0(<op2=%rdx),<t6=%xmm8
-mulpd 0(%rdx),%xmm8
+# asm 2: mulpd 0(<op2=RDX),<t6=%xmm8
+mulpd 0(RDX),%xmm8
 
 # qhasm: float6464 r6 +=t6
 # asm 1: addpd <t6=int6464#9,<r6=int6464#10
@@ -1295,8 +1296,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t7 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t7=int6464#9
-# asm 2: mulpd 16(<op2=%rdx),<t7=%xmm8
-mulpd 16(%rdx),%xmm8
+# asm 2: mulpd 16(<op2=RDX),<t7=%xmm8
+mulpd 16(RDX),%xmm8
 
 # qhasm: float6464 r7 +=t7
 # asm 1: addpd <t7=int6464#9,<r7=int6464#11
@@ -1310,8 +1311,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t8 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t8=int6464#9
-# asm 2: mulpd 32(<op2=%rdx),<t8=%xmm8
-mulpd 32(%rdx),%xmm8
+# asm 2: mulpd 32(<op2=RDX),<t8=%xmm8
+mulpd 32(RDX),%xmm8
 
 # qhasm: float6464 r8 +=t8
 # asm 1: addpd <t8=int6464#9,<r8=int6464#12
@@ -1325,8 +1326,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t9 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t9=int6464#9
-# asm 2: mulpd 48(<op2=%rdx),<t9=%xmm8
-mulpd 48(%rdx),%xmm8
+# asm 2: mulpd 48(<op2=RDX),<t9=%xmm8
+mulpd 48(RDX),%xmm8
 
 # qhasm: float6464 r9 +=t9
 # asm 1: addpd <t9=int6464#9,<r9=int6464#13
@@ -1340,8 +1341,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t10=int6464#9
-# asm 2: mulpd 64(<op2=%rdx),<t10=%xmm8
-mulpd 64(%rdx),%xmm8
+# asm 2: mulpd 64(<op2=RDX),<t10=%xmm8
+mulpd 64(RDX),%xmm8
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#9,<r10=int6464#14
@@ -1355,8 +1356,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t11=int6464#9
-# asm 2: mulpd 80(<op2=%rdx),<t11=%xmm8
-mulpd 80(%rdx),%xmm8
+# asm 2: mulpd 80(<op2=RDX),<t11=%xmm8
+mulpd 80(RDX),%xmm8
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#9,<r11=int6464#3
@@ -1370,8 +1371,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t12 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<t12=int6464#9
-# asm 2: mulpd 96(<op2=%rdx),<t12=%xmm8
-mulpd 96(%rdx),%xmm8
+# asm 2: mulpd 96(<op2=RDX),<t12=%xmm8
+mulpd 96(RDX),%xmm8
 
 # qhasm: float6464 r12 +=t12
 # asm 1: addpd <t12=int6464#9,<r12=int6464#15
@@ -1385,8 +1386,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t13 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<t13=int6464#9
-# asm 2: mulpd 112(<op2=%rdx),<t13=%xmm8
-mulpd 112(%rdx),%xmm8
+# asm 2: mulpd 112(<op2=RDX),<t13=%xmm8
+mulpd 112(RDX),%xmm8
 
 # qhasm: float6464 r13 +=t13
 # asm 1: addpd <t13=int6464#9,<r13=int6464#4
@@ -1400,8 +1401,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t14 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<t14=int6464#9
-# asm 2: mulpd 128(<op2=%rdx),<t14=%xmm8
-mulpd 128(%rdx),%xmm8
+# asm 2: mulpd 128(<op2=RDX),<t14=%xmm8
+mulpd 128(RDX),%xmm8
 
 # qhasm: float6464 r14 +=t14
 # asm 1: addpd <t14=int6464#9,<r14=int6464#5
@@ -1415,8 +1416,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t15 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<t15=int6464#9
-# asm 2: mulpd 144(<op2=%rdx),<t15=%xmm8
-mulpd 144(%rdx),%xmm8
+# asm 2: mulpd 144(<op2=RDX),<t15=%xmm8
+mulpd 144(RDX),%xmm8
 
 # qhasm: float6464 r15 +=t15
 # asm 1: addpd <t15=int6464#9,<r15=int6464#6
@@ -1430,8 +1431,8 @@ movdqa %xmm7,%xmm8
 
 # qhasm: float6464 t16 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<t16=int6464#9
-# asm 2: mulpd 160(<op2=%rdx),<t16=%xmm8
-mulpd 160(%rdx),%xmm8
+# asm 2: mulpd 160(<op2=RDX),<t16=%xmm8
+mulpd 160(RDX),%xmm8
 
 # qhasm: float6464 r16 +=t16
 # asm 1: addpd <t16=int6464#9,<r16=int6464#7
@@ -1445,13 +1446,13 @@ mulpd %xmm1,%xmm7
 
 # qhasm: *(int128 *)(rp + 96) = r6
 # asm 1: movdqa <r6=int6464#10,96(<rp=int64#4)
-# asm 2: movdqa <r6=%xmm9,96(<rp=%rcx)
-movdqa %xmm9,96(%rcx)
+# asm 2: movdqa <r6=%xmm9,96(<rp=RCX)
+movdqa %xmm9,96(RCX)
 
 # qhasm: ab7 = *(int128 *)(op1 + 112)
 # asm 1: movdqa 112(<op1=int64#2),>ab7=int6464#9
-# asm 2: movdqa 112(<op1=%rsi),>ab7=%xmm8
-movdqa 112(%rsi),%xmm8
+# asm 2: movdqa 112(<op1=RSI),>ab7=%xmm8
+movdqa 112(RSI),%xmm8
 
 # qhasm: r18 = ab7
 # asm 1: movdqa <ab7=int6464#9,>r18=int6464#10
@@ -1470,8 +1471,8 @@ movdqa %xmm8,%xmm15
 
 # qhasm: float6464 t7 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t7=int6464#16
-# asm 2: mulpd 0(<op2=%rdx),<t7=%xmm15
-mulpd 0(%rdx),%xmm15
+# asm 2: mulpd 0(<op2=RDX),<t7=%xmm15
+mulpd 0(RDX),%xmm15
 
 # qhasm: float6464 r7 +=t7
 # asm 1: addpd <t7=int6464#16,<r7=int6464#11
@@ -1480,8 +1481,8 @@ addpd %xmm15,%xmm10
 
 # qhasm: float6464 ab7 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<ab7=int6464#9
-# asm 2: mulpd 96(<op2=%rdx),<ab7=%xmm8
-mulpd 96(%rdx),%xmm8
+# asm 2: mulpd 96(<op2=RDX),<ab7=%xmm8
+mulpd 96(RDX),%xmm8
 
 # qhasm: float6464 r13 +=ab7
 # asm 1: addpd <ab7=int6464#9,<r13=int6464#4
@@ -1495,8 +1496,8 @@ movdqa %xmm9,%xmm8
 
 # qhasm: float6464 t8 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t8=int6464#9
-# asm 2: mulpd 16(<op2=%rdx),<t8=%xmm8
-mulpd 16(%rdx),%xmm8
+# asm 2: mulpd 16(<op2=RDX),<t8=%xmm8
+mulpd 16(RDX),%xmm8
 
 # qhasm: float6464 r8 +=t8
 # asm 1: addpd <t8=int6464#9,<r8=int6464#12
@@ -1510,8 +1511,8 @@ movdqa %xmm9,%xmm8
 
 # qhasm: float6464 t9 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t9=int6464#9
-# asm 2: mulpd 32(<op2=%rdx),<t9=%xmm8
-mulpd 32(%rdx),%xmm8
+# asm 2: mulpd 32(<op2=RDX),<t9=%xmm8
+mulpd 32(RDX),%xmm8
 
 # qhasm: float6464 r9 +=t9
 # asm 1: addpd <t9=int6464#9,<r9=int6464#13
@@ -1525,8 +1526,8 @@ movdqa %xmm9,%xmm8
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t10=int6464#9
-# asm 2: mulpd 48(<op2=%rdx),<t10=%xmm8
-mulpd 48(%rdx),%xmm8
+# asm 2: mulpd 48(<op2=RDX),<t10=%xmm8
+mulpd 48(RDX),%xmm8
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#9,<r10=int6464#14
@@ -1540,8 +1541,8 @@ movdqa %xmm9,%xmm8
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t11=int6464#9
-# asm 2: mulpd 64(<op2=%rdx),<t11=%xmm8
-mulpd 64(%rdx),%xmm8
+# asm 2: mulpd 64(<op2=RDX),<t11=%xmm8
+mulpd 64(RDX),%xmm8
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#9,<r11=int6464#3
@@ -1555,8 +1556,8 @@ movdqa %xmm9,%xmm8
 
 # qhasm: float6464 t12 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t12=int6464#9
-# asm 2: mulpd 80(<op2=%rdx),<t12=%xmm8
-mulpd 80(%rdx),%xmm8
+# asm 2: mulpd 80(<op2=RDX),<t12=%xmm8
+mulpd 80(RDX),%xmm8
 
 # qhasm: float6464 r12 +=t12
 # asm 1: addpd <t12=int6464#9,<r12=int6464#15
@@ -1570,8 +1571,8 @@ movdqa %xmm9,%xmm8
 
 # qhasm: float6464 t14 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<t14=int6464#9
-# asm 2: mulpd 112(<op2=%rdx),<t14=%xmm8
-mulpd 112(%rdx),%xmm8
+# asm 2: mulpd 112(<op2=RDX),<t14=%xmm8
+mulpd 112(RDX),%xmm8
 
 # qhasm: float6464 r14 +=t14
 # asm 1: addpd <t14=int6464#9,<r14=int6464#5
@@ -1585,8 +1586,8 @@ movdqa %xmm9,%xmm8
 
 # qhasm: float6464 t15 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<t15=int6464#9
-# asm 2: mulpd 128(<op2=%rdx),<t15=%xmm8
-mulpd 128(%rdx),%xmm8
+# asm 2: mulpd 128(<op2=RDX),<t15=%xmm8
+mulpd 128(RDX),%xmm8
 
 # qhasm: float6464 r15 +=t15
 # asm 1: addpd <t15=int6464#9,<r15=int6464#6
@@ -1600,8 +1601,8 @@ movdqa %xmm9,%xmm8
 
 # qhasm: float6464 t16 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<t16=int6464#9
-# asm 2: mulpd 144(<op2=%rdx),<t16=%xmm8
-mulpd 144(%rdx),%xmm8
+# asm 2: mulpd 144(<op2=RDX),<t16=%xmm8
+mulpd 144(RDX),%xmm8
 
 # qhasm: float6464 r16 +=t16
 # asm 1: addpd <t16=int6464#9,<r16=int6464#7
@@ -1615,8 +1616,8 @@ movdqa %xmm9,%xmm8
 
 # qhasm: float6464 t17 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<t17=int6464#9
-# asm 2: mulpd 160(<op2=%rdx),<t17=%xmm8
-mulpd 160(%rdx),%xmm8
+# asm 2: mulpd 160(<op2=RDX),<t17=%xmm8
+mulpd 160(RDX),%xmm8
 
 # qhasm: float6464 r17 +=t17
 # asm 1: addpd <t17=int6464#9,<r17=int6464#8
@@ -1630,13 +1631,13 @@ mulpd %xmm1,%xmm9
 
 # qhasm: *(int128 *)(rp + 112) = r7
 # asm 1: movdqa <r7=int6464#11,112(<rp=int64#4)
-# asm 2: movdqa <r7=%xmm10,112(<rp=%rcx)
-movdqa %xmm10,112(%rcx)
+# asm 2: movdqa <r7=%xmm10,112(<rp=RCX)
+movdqa %xmm10,112(RCX)
 
 # qhasm: r19 = *(int128 *)(op1 + 128)
 # asm 1: movdqa 128(<op1=int64#2),>r19=int6464#9
-# asm 2: movdqa 128(<op1=%rsi),>r19=%xmm8
-movdqa 128(%rsi),%xmm8
+# asm 2: movdqa 128(<op1=RSI),>r19=%xmm8
+movdqa 128(RSI),%xmm8
 
 # qhasm: ab8six = r19
 # asm 1: movdqa <r19=int6464#9,>ab8six=int6464#11
@@ -1655,8 +1656,8 @@ movdqa %xmm8,%xmm15
 
 # qhasm: float6464 t8 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t8=int6464#16
-# asm 2: mulpd 0(<op2=%rdx),<t8=%xmm15
-mulpd 0(%rdx),%xmm15
+# asm 2: mulpd 0(<op2=RDX),<t8=%xmm15
+mulpd 0(RDX),%xmm15
 
 # qhasm: float6464 r8 +=t8
 # asm 1: addpd <t8=int6464#16,<r8=int6464#12
@@ -1670,8 +1671,8 @@ movdqa %xmm8,%xmm15
 
 # qhasm: float6464 t13 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t13=int6464#16
-# asm 2: mulpd 80(<op2=%rdx),<t13=%xmm15
-mulpd 80(%rdx),%xmm15
+# asm 2: mulpd 80(<op2=RDX),<t13=%xmm15
+mulpd 80(RDX),%xmm15
 
 # qhasm: float6464 r13 +=t13
 # asm 1: addpd <t13=int6464#16,<r13=int6464#4
@@ -1685,8 +1686,8 @@ movdqa %xmm8,%xmm15
 
 # qhasm: float6464 t14 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<t14=int6464#16
-# asm 2: mulpd 96(<op2=%rdx),<t14=%xmm15
-mulpd 96(%rdx),%xmm15
+# asm 2: mulpd 96(<op2=RDX),<t14=%xmm15
+mulpd 96(RDX),%xmm15
 
 # qhasm: float6464 r14 +=t14
 # asm 1: addpd <t14=int6464#16,<r14=int6464#5
@@ -1705,8 +1706,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t9 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t9=int6464#16
-# asm 2: mulpd 16(<op2=%rdx),<t9=%xmm15
-mulpd 16(%rdx),%xmm15
+# asm 2: mulpd 16(<op2=RDX),<t9=%xmm15
+mulpd 16(RDX),%xmm15
 
 # qhasm: float6464 r9 +=t9
 # asm 1: addpd <t9=int6464#16,<r9=int6464#13
@@ -1720,8 +1721,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t10=int6464#16
-# asm 2: mulpd 32(<op2=%rdx),<t10=%xmm15
-mulpd 32(%rdx),%xmm15
+# asm 2: mulpd 32(<op2=RDX),<t10=%xmm15
+mulpd 32(RDX),%xmm15
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#16,<r10=int6464#14
@@ -1735,8 +1736,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t11=int6464#16
-# asm 2: mulpd 48(<op2=%rdx),<t11=%xmm15
-mulpd 48(%rdx),%xmm15
+# asm 2: mulpd 48(<op2=RDX),<t11=%xmm15
+mulpd 48(RDX),%xmm15
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#16,<r11=int6464#3
@@ -1750,8 +1751,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t12 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t12=int6464#16
-# asm 2: mulpd 64(<op2=%rdx),<t12=%xmm15
-mulpd 64(%rdx),%xmm15
+# asm 2: mulpd 64(<op2=RDX),<t12=%xmm15
+mulpd 64(RDX),%xmm15
 
 # qhasm: float6464 r12 +=t12
 # asm 1: addpd <t12=int6464#16,<r12=int6464#15
@@ -1765,8 +1766,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t15 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<t15=int6464#16
-# asm 2: mulpd 112(<op2=%rdx),<t15=%xmm15
-mulpd 112(%rdx),%xmm15
+# asm 2: mulpd 112(<op2=RDX),<t15=%xmm15
+mulpd 112(RDX),%xmm15
 
 # qhasm: float6464 r15 +=t15
 # asm 1: addpd <t15=int6464#16,<r15=int6464#6
@@ -1780,8 +1781,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t16 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<t16=int6464#16
-# asm 2: mulpd 128(<op2=%rdx),<t16=%xmm15
-mulpd 128(%rdx),%xmm15
+# asm 2: mulpd 128(<op2=RDX),<t16=%xmm15
+mulpd 128(RDX),%xmm15
 
 # qhasm: float6464 r16 +=t16
 # asm 1: addpd <t16=int6464#16,<r16=int6464#7
@@ -1795,8 +1796,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t17 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<t17=int6464#16
-# asm 2: mulpd 144(<op2=%rdx),<t17=%xmm15
-mulpd 144(%rdx),%xmm15
+# asm 2: mulpd 144(<op2=RDX),<t17=%xmm15
+mulpd 144(RDX),%xmm15
 
 # qhasm: float6464 r17 +=t17
 # asm 1: addpd <t17=int6464#16,<r17=int6464#8
@@ -1805,8 +1806,8 @@ addpd %xmm15,%xmm7
 
 # qhasm: float6464 ab8six *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<ab8six=int6464#11
-# asm 2: mulpd 160(<op2=%rdx),<ab8six=%xmm10
-mulpd 160(%rdx),%xmm10
+# asm 2: mulpd 160(<op2=RDX),<ab8six=%xmm10
+mulpd 160(RDX),%xmm10
 
 # qhasm: float6464 r18 += ab8six
 # asm 1: addpd <ab8six=int6464#11,<r18=int6464#10
@@ -1815,13 +1816,13 @@ addpd %xmm10,%xmm9
 
 # qhasm: *(int128 *)(rp + 128) = r8
 # asm 1: movdqa <r8=int6464#12,128(<rp=int64#4)
-# asm 2: movdqa <r8=%xmm11,128(<rp=%rcx)
-movdqa %xmm11,128(%rcx)
+# asm 2: movdqa <r8=%xmm11,128(<rp=RCX)
+movdqa %xmm11,128(RCX)
 
 # qhasm: r20 = *(int128 *)(op1 + 144)
 # asm 1: movdqa 144(<op1=int64#2),>r20=int6464#11
-# asm 2: movdqa 144(<op1=%rsi),>r20=%xmm10
-movdqa 144(%rsi),%xmm10
+# asm 2: movdqa 144(<op1=RSI),>r20=%xmm10
+movdqa 144(RSI),%xmm10
 
 # qhasm: ab9six = r20
 # asm 1: movdqa <r20=int6464#11,>ab9six=int6464#12
@@ -1840,8 +1841,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t9 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t9=int6464#16
-# asm 2: mulpd 0(<op2=%rdx),<t9=%xmm15
-mulpd 0(%rdx),%xmm15
+# asm 2: mulpd 0(<op2=RDX),<t9=%xmm15
+mulpd 0(RDX),%xmm15
 
 # qhasm: float6464 r9 +=t9
 # asm 1: addpd <t9=int6464#16,<r9=int6464#13
@@ -1855,8 +1856,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t13 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t13=int6464#16
-# asm 2: mulpd 64(<op2=%rdx),<t13=%xmm15
-mulpd 64(%rdx),%xmm15
+# asm 2: mulpd 64(<op2=RDX),<t13=%xmm15
+mulpd 64(RDX),%xmm15
 
 # qhasm: float6464 r13 +=t13
 # asm 1: addpd <t13=int6464#16,<r13=int6464#4
@@ -1870,8 +1871,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t14 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t14=int6464#16
-# asm 2: mulpd 80(<op2=%rdx),<t14=%xmm15
-mulpd 80(%rdx),%xmm15
+# asm 2: mulpd 80(<op2=RDX),<t14=%xmm15
+mulpd 80(RDX),%xmm15
 
 # qhasm: float6464 r14 +=t14
 # asm 1: addpd <t14=int6464#16,<r14=int6464#5
@@ -1885,8 +1886,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t15 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<t15=int6464#16
-# asm 2: mulpd 96(<op2=%rdx),<t15=%xmm15
-mulpd 96(%rdx),%xmm15
+# asm 2: mulpd 96(<op2=RDX),<t15=%xmm15
+mulpd 96(RDX),%xmm15
 
 # qhasm: float6464 r15 +=t15
 # asm 1: addpd <t15=int6464#16,<r15=int6464#6
@@ -1900,8 +1901,8 @@ movdqa %xmm10,%xmm15
 
 # qhasm: float6464 t19 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<t19=int6464#16
-# asm 2: mulpd 160(<op2=%rdx),<t19=%xmm15
-mulpd 160(%rdx),%xmm15
+# asm 2: mulpd 160(<op2=RDX),<t19=%xmm15
+mulpd 160(RDX),%xmm15
 
 # qhasm: float6464 r19 +=t19
 # asm 1: addpd <t19=int6464#16,<r19=int6464#9
@@ -1920,8 +1921,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t10=int6464#16
-# asm 2: mulpd 16(<op2=%rdx),<t10=%xmm15
-mulpd 16(%rdx),%xmm15
+# asm 2: mulpd 16(<op2=RDX),<t10=%xmm15
+mulpd 16(RDX),%xmm15
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#16,<r10=int6464#14
@@ -1935,8 +1936,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t11=int6464#16
-# asm 2: mulpd 32(<op2=%rdx),<t11=%xmm15
-mulpd 32(%rdx),%xmm15
+# asm 2: mulpd 32(<op2=RDX),<t11=%xmm15
+mulpd 32(RDX),%xmm15
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#16,<r11=int6464#3
@@ -1950,8 +1951,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t12 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t12=int6464#16
-# asm 2: mulpd 48(<op2=%rdx),<t12=%xmm15
-mulpd 48(%rdx),%xmm15
+# asm 2: mulpd 48(<op2=RDX),<t12=%xmm15
+mulpd 48(RDX),%xmm15
 
 # qhasm: float6464 r12 +=t12
 # asm 1: addpd <t12=int6464#16,<r12=int6464#15
@@ -1965,8 +1966,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t16 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<t16=int6464#16
-# asm 2: mulpd 112(<op2=%rdx),<t16=%xmm15
-mulpd 112(%rdx),%xmm15
+# asm 2: mulpd 112(<op2=RDX),<t16=%xmm15
+mulpd 112(RDX),%xmm15
 
 # qhasm: float6464 r16 +=t16
 # asm 1: addpd <t16=int6464#16,<r16=int6464#7
@@ -1980,8 +1981,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t17 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<t17=int6464#16
-# asm 2: mulpd 128(<op2=%rdx),<t17=%xmm15
-mulpd 128(%rdx),%xmm15
+# asm 2: mulpd 128(<op2=RDX),<t17=%xmm15
+mulpd 128(RDX),%xmm15
 
 # qhasm: float6464 r17 +=t17
 # asm 1: addpd <t17=int6464#16,<r17=int6464#8
@@ -1990,8 +1991,8 @@ addpd %xmm15,%xmm7
 
 # qhasm: float6464 ab9six *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<ab9six=int6464#12
-# asm 2: mulpd 144(<op2=%rdx),<ab9six=%xmm11
-mulpd 144(%rdx),%xmm11
+# asm 2: mulpd 144(<op2=RDX),<ab9six=%xmm11
+mulpd 144(RDX),%xmm11
 
 # qhasm: float6464 r18 +=ab9six
 # asm 1: addpd <ab9six=int6464#12,<r18=int6464#10
@@ -2000,13 +2001,13 @@ addpd %xmm11,%xmm9
 
 # qhasm: *(int128 *)(rp + 144) = r9
 # asm 1: movdqa <r9=int6464#13,144(<rp=int64#4)
-# asm 2: movdqa <r9=%xmm12,144(<rp=%rcx)
-movdqa %xmm12,144(%rcx)
+# asm 2: movdqa <r9=%xmm12,144(<rp=RCX)
+movdqa %xmm12,144(RCX)
 
 # qhasm: r21 = *(int128 *)(op1 + 160)
 # asm 1: movdqa 160(<op1=int64#2),>r21=int6464#12
-# asm 2: movdqa 160(<op1=%rsi),>r21=%xmm11
-movdqa 160(%rsi),%xmm11
+# asm 2: movdqa 160(<op1=RSI),>r21=%xmm11
+movdqa 160(RSI),%xmm11
 
 # qhasm: ab10six = r21
 # asm 1: movdqa <r21=int6464#12,>ab10six=int6464#13
@@ -2025,8 +2026,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t10 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t10=int6464#16
-# asm 2: mulpd 0(<op2=%rdx),<t10=%xmm15
-mulpd 0(%rdx),%xmm15
+# asm 2: mulpd 0(<op2=RDX),<t10=%xmm15
+mulpd 0(RDX),%xmm15
 
 # qhasm: float6464 r10 +=t10
 # asm 1: addpd <t10=int6464#16,<r10=int6464#14
@@ -2040,8 +2041,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t13 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t13=int6464#16
-# asm 2: mulpd 48(<op2=%rdx),<t13=%xmm15
-mulpd 48(%rdx),%xmm15
+# asm 2: mulpd 48(<op2=RDX),<t13=%xmm15
+mulpd 48(RDX),%xmm15
 
 # qhasm: float6464 r13 +=t13
 # asm 1: addpd <t13=int6464#16,<r13=int6464#4
@@ -2055,8 +2056,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t14 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t14=int6464#16
-# asm 2: mulpd 64(<op2=%rdx),<t14=%xmm15
-mulpd 64(%rdx),%xmm15
+# asm 2: mulpd 64(<op2=RDX),<t14=%xmm15
+mulpd 64(RDX),%xmm15
 
 # qhasm: float6464 r14 +=t14
 # asm 1: addpd <t14=int6464#16,<r14=int6464#5
@@ -2070,8 +2071,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t16 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<t16=int6464#16
-# asm 2: mulpd 96(<op2=%rdx),<t16=%xmm15
-mulpd 96(%rdx),%xmm15
+# asm 2: mulpd 96(<op2=RDX),<t16=%xmm15
+mulpd 96(RDX),%xmm15
 
 # qhasm: float6464 r16 +=t16
 # asm 1: addpd <t16=int6464#16,<r16=int6464#7
@@ -2085,8 +2086,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t15 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t15=int6464#16
-# asm 2: mulpd 80(<op2=%rdx),<t15=%xmm15
-mulpd 80(%rdx),%xmm15
+# asm 2: mulpd 80(<op2=RDX),<t15=%xmm15
+mulpd 80(RDX),%xmm15
 
 # qhasm: float6464 r15 +=t15
 # asm 1: addpd <t15=int6464#16,<r15=int6464#6
@@ -2100,8 +2101,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t19 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<t19=int6464#16
-# asm 2: mulpd 144(<op2=%rdx),<t19=%xmm15
-mulpd 144(%rdx),%xmm15
+# asm 2: mulpd 144(<op2=RDX),<t19=%xmm15
+mulpd 144(RDX),%xmm15
 
 # qhasm: float6464 r19 +=t19
 # asm 1: addpd <t19=int6464#16,<r19=int6464#9
@@ -2115,8 +2116,8 @@ movdqa %xmm11,%xmm15
 
 # qhasm: float6464 t20 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<t20=int6464#16
-# asm 2: mulpd 160(<op2=%rdx),<t20=%xmm15
-mulpd 160(%rdx),%xmm15
+# asm 2: mulpd 160(<op2=RDX),<t20=%xmm15
+mulpd 160(RDX),%xmm15
 
 # qhasm: float6464 r20 +=t20
 # asm 1: addpd <t20=int6464#16,<r20=int6464#11
@@ -2135,8 +2136,8 @@ movdqa %xmm12,%xmm15
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t11=int6464#16
-# asm 2: mulpd 16(<op2=%rdx),<t11=%xmm15
-mulpd 16(%rdx),%xmm15
+# asm 2: mulpd 16(<op2=RDX),<t11=%xmm15
+mulpd 16(RDX),%xmm15
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#16,<r11=int6464#3
@@ -2150,8 +2151,8 @@ movdqa %xmm12,%xmm15
 
 # qhasm: float6464 t12 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t12=int6464#16
-# asm 2: mulpd 32(<op2=%rdx),<t12=%xmm15
-mulpd 32(%rdx),%xmm15
+# asm 2: mulpd 32(<op2=RDX),<t12=%xmm15
+mulpd 32(RDX),%xmm15
 
 # qhasm: float6464 r12 +=t12
 # asm 1: addpd <t12=int6464#16,<r12=int6464#15
@@ -2165,8 +2166,8 @@ movdqa %xmm12,%xmm15
 
 # qhasm: float6464 t17 *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<t17=int6464#16
-# asm 2: mulpd 112(<op2=%rdx),<t17=%xmm15
-mulpd 112(%rdx),%xmm15
+# asm 2: mulpd 112(<op2=RDX),<t17=%xmm15
+mulpd 112(RDX),%xmm15
 
 # qhasm: float6464 r17 +=t17
 # asm 1: addpd <t17=int6464#16,<r17=int6464#8
@@ -2175,8 +2176,8 @@ addpd %xmm15,%xmm7
 
 # qhasm: float6464 ab10six *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<ab10six=int6464#13
-# asm 2: mulpd 128(<op2=%rdx),<ab10six=%xmm12
-mulpd 128(%rdx),%xmm12
+# asm 2: mulpd 128(<op2=RDX),<ab10six=%xmm12
+mulpd 128(RDX),%xmm12
 
 # qhasm: float6464 r18 +=ab10six
 # asm 1: addpd <ab10six=int6464#13,<r18=int6464#10
@@ -2185,13 +2186,13 @@ addpd %xmm12,%xmm9
 
 # qhasm: *(int128 *)(rp + 160) = r10
 # asm 1: movdqa <r10=int6464#14,160(<rp=int64#4)
-# asm 2: movdqa <r10=%xmm13,160(<rp=%rcx)
-movdqa %xmm13,160(%rcx)
+# asm 2: movdqa <r10=%xmm13,160(<rp=RCX)
+movdqa %xmm13,160(RCX)
 
 # qhasm: r22 = *(int128 *)(op1 + 176)
 # asm 1: movdqa 176(<op1=int64#2),>r22=int6464#13
-# asm 2: movdqa 176(<op1=%rsi),>r22=%xmm12
-movdqa 176(%rsi),%xmm12
+# asm 2: movdqa 176(<op1=RSI),>r22=%xmm12
+movdqa 176(RSI),%xmm12
 
 # qhasm: ab11six = r22
 # asm 1: movdqa <r22=int6464#13,>ab11six=int6464#14
@@ -2210,8 +2211,8 @@ movdqa %xmm12,%xmm0
 
 # qhasm: float6464 t11 *= *(int128 *)(op2 + 0)
 # asm 1: mulpd 0(<op2=int64#3),<t11=int6464#1
-# asm 2: mulpd 0(<op2=%rdx),<t11=%xmm0
-mulpd 0(%rdx),%xmm0
+# asm 2: mulpd 0(<op2=RDX),<t11=%xmm0
+mulpd 0(RDX),%xmm0
 
 # qhasm: float6464 r11 +=t11
 # asm 1: addpd <t11=int6464#1,<r11=int6464#3
@@ -2225,8 +2226,8 @@ movdqa %xmm12,%xmm0
 
 # qhasm: float6464 t13 *= *(int128 *)(op2 + 32)
 # asm 1: mulpd 32(<op2=int64#3),<t13=int6464#1
-# asm 2: mulpd 32(<op2=%rdx),<t13=%xmm0
-mulpd 32(%rdx),%xmm0
+# asm 2: mulpd 32(<op2=RDX),<t13=%xmm0
+mulpd 32(RDX),%xmm0
 
 # qhasm: float6464 r13 +=t13
 # asm 1: addpd <t13=int6464#1,<r13=int6464#4
@@ -2240,8 +2241,8 @@ movdqa %xmm12,%xmm0
 
 # qhasm: float6464 t14 *= *(int128 *)(op2 + 48)
 # asm 1: mulpd 48(<op2=int64#3),<t14=int6464#1
-# asm 2: mulpd 48(<op2=%rdx),<t14=%xmm0
-mulpd 48(%rdx),%xmm0
+# asm 2: mulpd 48(<op2=RDX),<t14=%xmm0
+mulpd 48(RDX),%xmm0
 
 # qhasm: float6464 r14 +=t14
 # asm 1: addpd <t14=int6464#1,<r14=int6464#5
@@ -2255,8 +2256,8 @@ movdqa %xmm12,%xmm0
 
 # qhasm: float6464 t15 *= *(int128 *)(op2 + 64)
 # asm 1: mulpd 64(<op2=int64#3),<t15=int6464#1
-# asm 2: mulpd 64(<op2=%rdx),<t15=%xmm0
-mulpd 64(%rdx),%xmm0
+# asm 2: mulpd 64(<op2=RDX),<t15=%xmm0
+mulpd 64(RDX),%xmm0
 
 # qhasm: float6464 r15 +=t15
 # asm 1: addpd <t15=int6464#1,<r15=int6464#6
@@ -2270,8 +2271,8 @@ movdqa %xmm12,%xmm0
 
 # qhasm: float6464 t16 *= *(int128 *)(op2 + 80)
 # asm 1: mulpd 80(<op2=int64#3),<t16=int6464#1
-# asm 2: mulpd 80(<op2=%rdx),<t16=%xmm0
-mulpd 80(%rdx),%xmm0
+# asm 2: mulpd 80(<op2=RDX),<t16=%xmm0
+mulpd 80(RDX),%xmm0
 
 # qhasm: float6464 r16 +=t16
 # asm 1: addpd <t16=int6464#1,<r16=int6464#7
@@ -2285,8 +2286,8 @@ movdqa %xmm12,%xmm0
 
 # qhasm: float6464 t17 *= *(int128 *)(op2 + 96)
 # asm 1: mulpd 96(<op2=int64#3),<t17=int6464#1
-# asm 2: mulpd 96(<op2=%rdx),<t17=%xmm0
-mulpd 96(%rdx),%xmm0
+# asm 2: mulpd 96(<op2=RDX),<t17=%xmm0
+mulpd 96(RDX),%xmm0
 
 # qhasm: float6464 r17 +=t17
 # asm 1: addpd <t17=int6464#1,<r17=int6464#8
@@ -2300,8 +2301,8 @@ movdqa %xmm12,%xmm0
 
 # qhasm: float6464 t19 *= *(int128 *)(op2 + 128)
 # asm 1: mulpd 128(<op2=int64#3),<t19=int6464#1
-# asm 2: mulpd 128(<op2=%rdx),<t19=%xmm0
-mulpd 128(%rdx),%xmm0
+# asm 2: mulpd 128(<op2=RDX),<t19=%xmm0
+mulpd 128(RDX),%xmm0
 
 # qhasm: float6464 r19 +=t19
 # asm 1: addpd <t19=int6464#1,<r19=int6464#9
@@ -2315,8 +2316,8 @@ movdqa %xmm12,%xmm0
 
 # qhasm: float6464 t20 *= *(int128 *)(op2 + 144)
 # asm 1: mulpd 144(<op2=int64#3),<t20=int6464#1
-# asm 2: mulpd 144(<op2=%rdx),<t20=%xmm0
-mulpd 144(%rdx),%xmm0
+# asm 2: mulpd 144(<op2=RDX),<t20=%xmm0
+mulpd 144(RDX),%xmm0
 
 # qhasm: float6464 r20 +=t20
 # asm 1: addpd <t20=int6464#1,<r20=int6464#11
@@ -2330,8 +2331,8 @@ movdqa %xmm12,%xmm0
 
 # qhasm: float6464 t21 *= *(int128 *)(op2 + 160)
 # asm 1: mulpd 160(<op2=int64#3),<t21=int6464#1
-# asm 2: mulpd 160(<op2=%rdx),<t21=%xmm0
-mulpd 160(%rdx),%xmm0
+# asm 2: mulpd 160(<op2=RDX),<t21=%xmm0
+mulpd 160(RDX),%xmm0
 
 # qhasm: float6464 r21 +=t21
 # asm 1: addpd <t21=int6464#1,<r21=int6464#12
@@ -2350,8 +2351,8 @@ movdqa %xmm13,%xmm0
 
 # qhasm: float6464 t12 *= *(int128 *)(op2 + 16)
 # asm 1: mulpd 16(<op2=int64#3),<t12=int6464#1
-# asm 2: mulpd 16(<op2=%rdx),<t12=%xmm0
-mulpd 16(%rdx),%xmm0
+# asm 2: mulpd 16(<op2=RDX),<t12=%xmm0
+mulpd 16(RDX),%xmm0
 
 # qhasm: float6464 r12 +=t12
 # asm 1: addpd <t12=int6464#1,<r12=int6464#15
@@ -2360,8 +2361,8 @@ addpd %xmm0,%xmm14
 
 # qhasm: float6464 ab11six *= *(int128 *)(op2 + 112)
 # asm 1: mulpd 112(<op2=int64#3),<ab11six=int6464#14
-# asm 2: mulpd 112(<op2=%rdx),<ab11six=%xmm13
-mulpd 112(%rdx),%xmm13
+# asm 2: mulpd 112(<op2=RDX),<ab11six=%xmm13
+mulpd 112(RDX),%xmm13
 
 # qhasm: float6464 r18 +=ab11six
 # asm 1: addpd <ab11six=int6464#14,<r18=int6464#10
@@ -2370,8 +2371,8 @@ addpd %xmm13,%xmm9
 
 # qhasm: *(int128 *)(rp + 176) = r11
 # asm 1: movdqa <r11=int6464#3,176(<rp=int64#4)
-# asm 2: movdqa <r11=%xmm2,176(<rp=%rcx)
-movdqa %xmm2,176(%rcx)
+# asm 2: movdqa <r11=%xmm2,176(<rp=RCX)
+movdqa %xmm2,176(RCX)
 
 # qhasm: int6464 0r0
 
@@ -2445,8 +2446,8 @@ movdqa %xmm2,176(%rcx)
 
 # qhasm: 0r0 = *(int128 *)(rp + 0)
 # asm 1: movdqa 0(<rp=int64#4),>0r0=int6464#1
-# asm 2: movdqa 0(<rp=%rcx),>0r0=%xmm0
-movdqa 0(%rcx),%xmm0
+# asm 2: movdqa 0(<rp=RCX),>0r0=%xmm0
+movdqa 0(RCX),%xmm0
 
 # qhasm: float6464 0r0 -= r12
 # asm 1: subpd <r12=int6464#15,<0r0=int6464#1
@@ -2500,13 +2501,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 0) = 0r0
 # asm 1: movdqa <0r0=int6464#1,0(<rp=int64#4)
-# asm 2: movdqa <0r0=%xmm0,0(<rp=%rcx)
-movdqa %xmm0,0(%rcx)
+# asm 2: movdqa <0r0=%xmm0,0(<rp=RCX)
+movdqa %xmm0,0(RCX)
 
 # qhasm: 0r3 = *(int128 *)(rp + 48)
 # asm 1: movdqa 48(<rp=int64#4),>0r3=int6464#1
-# asm 2: movdqa 48(<rp=%rcx),>0r3=%xmm0
-movdqa 48(%rcx),%xmm0
+# asm 2: movdqa 48(<rp=RCX),>0r3=%xmm0
+movdqa 48(RCX),%xmm0
 
 # qhasm: float6464 0r3 -= r12
 # asm 1: subpd <r12=int6464#15,<0r3=int6464#1
@@ -2550,13 +2551,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 48) = 0r3
 # asm 1: movdqa <0r3=int6464#1,48(<rp=int64#4)
-# asm 2: movdqa <0r3=%xmm0,48(<rp=%rcx)
-movdqa %xmm0,48(%rcx)
+# asm 2: movdqa <0r3=%xmm0,48(<rp=RCX)
+movdqa %xmm0,48(RCX)
 
 # qhasm: 0r6 = *(int128 *)(rp + 96)
 # asm 1: movdqa 96(<rp=int64#4),>0r6=int6464#1
-# asm 2: movdqa 96(<rp=%rcx),>0r6=%xmm0
-movdqa 96(%rcx),%xmm0
+# asm 2: movdqa 96(<rp=RCX),>0r6=%xmm0
+movdqa 96(RCX),%xmm0
 
 # qhasm: 0t12 = r12
 # asm 1: movdqa <r12=int6464#15,>0t12=int6464#2
@@ -2620,13 +2621,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 96) = 0r6
 # asm 1: movdqa <0r6=int6464#1,96(<rp=int64#4)
-# asm 2: movdqa <0r6=%xmm0,96(<rp=%rcx)
-movdqa %xmm0,96(%rcx)
+# asm 2: movdqa <0r6=%xmm0,96(<rp=RCX)
+movdqa %xmm0,96(RCX)
 
 # qhasm: 0r9 = *(int128 *)(rp + 144)
 # asm 1: movdqa 144(<rp=int64#4),>0r9=int6464#1
-# asm 2: movdqa 144(<rp=%rcx),>0r9=%xmm0
-movdqa 144(%rcx),%xmm0
+# asm 2: movdqa 144(<rp=RCX),>0r9=%xmm0
+movdqa 144(RCX),%xmm0
 
 # qhasm: float6464 0r9 -= r12
 # asm 1: subpd <r12=int6464#15,<0r9=int6464#1
@@ -2670,13 +2671,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 144) = 0r9
 # asm 1: movdqa <0r9=int6464#1,144(<rp=int64#4)
-# asm 2: movdqa <0r9=%xmm0,144(<rp=%rcx)
-movdqa %xmm0,144(%rcx)
+# asm 2: movdqa <0r9=%xmm0,144(<rp=RCX)
+movdqa %xmm0,144(RCX)
 
 # qhasm: 0r1 = *(int128 *)(rp + 16)
 # asm 1: movdqa 16(<rp=int64#4),>0r1=int6464#1
-# asm 2: movdqa 16(<rp=%rcx),>0r1=%xmm0
-movdqa 16(%rcx),%xmm0
+# asm 2: movdqa 16(<rp=RCX),>0r1=%xmm0
+movdqa 16(RCX),%xmm0
 
 # qhasm: float6464 0r1 -= r13
 # asm 1: subpd <r13=int6464#4,<0r1=int6464#1
@@ -2710,13 +2711,13 @@ subpd %xmm12,%xmm0
 
 # qhasm: *(int128 *)(rp + 16) = 0r1
 # asm 1: movdqa <0r1=int6464#1,16(<rp=int64#4)
-# asm 2: movdqa <0r1=%xmm0,16(<rp=%rcx)
-movdqa %xmm0,16(%rcx)
+# asm 2: movdqa <0r1=%xmm0,16(<rp=RCX)
+movdqa %xmm0,16(RCX)
 
 # qhasm: 0r4 = *(int128 *)(rp + 64)
 # asm 1: movdqa 64(<rp=int64#4),>0r4=int6464#1
-# asm 2: movdqa 64(<rp=%rcx),>0r4=%xmm0
-movdqa 64(%rcx),%xmm0
+# asm 2: movdqa 64(<rp=RCX),>0r4=%xmm0
+movdqa 64(RCX),%xmm0
 
 # qhasm: 0t13 = r13
 # asm 1: movdqa <r13=int6464#4,>0t13=int6464#2
@@ -2780,13 +2781,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 64) = 0r4
 # asm 1: movdqa <0r4=int6464#1,64(<rp=int64#4)
-# asm 2: movdqa <0r4=%xmm0,64(<rp=%rcx)
-movdqa %xmm0,64(%rcx)
+# asm 2: movdqa <0r4=%xmm0,64(<rp=RCX)
+movdqa %xmm0,64(RCX)
 
 # qhasm: 0r7 = *(int128 *)(rp + 112)
 # asm 1: movdqa 112(<rp=int64#4),>0r7=int6464#1
-# asm 2: movdqa 112(<rp=%rcx),>0r7=%xmm0
-movdqa 112(%rcx),%xmm0
+# asm 2: movdqa 112(<rp=RCX),>0r7=%xmm0
+movdqa 112(RCX),%xmm0
 
 # qhasm: 0t13 = r13
 # asm 1: movdqa <r13=int6464#4,>0t13=int6464#2
@@ -2850,13 +2851,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 112) = 0r7
 # asm 1: movdqa <0r7=int6464#1,112(<rp=int64#4)
-# asm 2: movdqa <0r7=%xmm0,112(<rp=%rcx)
-movdqa %xmm0,112(%rcx)
+# asm 2: movdqa <0r7=%xmm0,112(<rp=RCX)
+movdqa %xmm0,112(RCX)
 
 # qhasm: 0r10 = *(int128 *)(rp + 160)
 # asm 1: movdqa 160(<rp=int64#4),>0r10=int6464#1
-# asm 2: movdqa 160(<rp=%rcx),>0r10=%xmm0
-movdqa 160(%rcx),%xmm0
+# asm 2: movdqa 160(<rp=RCX),>0r10=%xmm0
+movdqa 160(RCX),%xmm0
 
 # qhasm: 0t13 = r13
 # asm 1: movdqa <r13=int6464#4,>0t13=int6464#2
@@ -2920,13 +2921,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 160) = 0r10
 # asm 1: movdqa <0r10=int6464#1,160(<rp=int64#4)
-# asm 2: movdqa <0r10=%xmm0,160(<rp=%rcx)
-movdqa %xmm0,160(%rcx)
+# asm 2: movdqa <0r10=%xmm0,160(<rp=RCX)
+movdqa %xmm0,160(RCX)
 
 # qhasm: 0r2 = *(int128 *)(rp + 32)
 # asm 1: movdqa 32(<rp=int64#4),>0r2=int6464#1
-# asm 2: movdqa 32(<rp=%rcx),>0r2=%xmm0
-movdqa 32(%rcx),%xmm0
+# asm 2: movdqa 32(<rp=RCX),>0r2=%xmm0
+movdqa 32(RCX),%xmm0
 
 # qhasm: float6464 0r2 -= r14
 # asm 1: subpd <r14=int6464#5,<0r2=int6464#1
@@ -2955,13 +2956,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 32) = 0r2
 # asm 1: movdqa <0r2=int6464#1,32(<rp=int64#4)
-# asm 2: movdqa <0r2=%xmm0,32(<rp=%rcx)
-movdqa %xmm0,32(%rcx)
+# asm 2: movdqa <0r2=%xmm0,32(<rp=RCX)
+movdqa %xmm0,32(RCX)
 
 # qhasm: 0r5 = *(int128 *)(rp + 80)
 # asm 1: movdqa 80(<rp=int64#4),>0r5=int6464#1
-# asm 2: movdqa 80(<rp=%rcx),>0r5=%xmm0
-movdqa 80(%rcx),%xmm0
+# asm 2: movdqa 80(<rp=RCX),>0r5=%xmm0
+movdqa 80(RCX),%xmm0
 
 # qhasm: 0t14 = r14
 # asm 1: movdqa <r14=int6464#5,>0t14=int6464#2
@@ -3010,13 +3011,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 80) = 0r5
 # asm 1: movdqa <0r5=int6464#1,80(<rp=int64#4)
-# asm 2: movdqa <0r5=%xmm0,80(<rp=%rcx)
-movdqa %xmm0,80(%rcx)
+# asm 2: movdqa <0r5=%xmm0,80(<rp=RCX)
+movdqa %xmm0,80(RCX)
 
 # qhasm: 0r8 = *(int128 *)(rp + 128)
 # asm 1: movdqa 128(<rp=int64#4),>0r8=int6464#1
-# asm 2: movdqa 128(<rp=%rcx),>0r8=%xmm0
-movdqa 128(%rcx),%xmm0
+# asm 2: movdqa 128(<rp=RCX),>0r8=%xmm0
+movdqa 128(RCX),%xmm0
 
 # qhasm: 0t14 = r14
 # asm 1: movdqa <r14=int6464#5,>0t14=int6464#2
@@ -3065,13 +3066,13 @@ subpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 128) = 0r8
 # asm 1: movdqa <0r8=int6464#1,128(<rp=int64#4)
-# asm 2: movdqa <0r8=%xmm0,128(<rp=%rcx)
-movdqa %xmm0,128(%rcx)
+# asm 2: movdqa <0r8=%xmm0,128(<rp=RCX)
+movdqa %xmm0,128(RCX)
 
 # qhasm: 0r11 = *(int128 *)(rp + 176)
 # asm 1: movdqa 176(<rp=int64#4),>0r11=int6464#1
-# asm 2: movdqa 176(<rp=%rcx),>0r11=%xmm0
-movdqa 176(%rcx),%xmm0
+# asm 2: movdqa 176(<rp=RCX),>0r11=%xmm0
+movdqa 176(RCX),%xmm0
 
 # qhasm: 0t14 = r14
 # asm 1: movdqa <r14=int6464#5,>0t14=int6464#2
@@ -3120,8 +3121,8 @@ addpd %xmm1,%xmm0
 
 # qhasm: *(int128 *)(rp + 176) = 0r11
 # asm 1: movdqa <0r11=int6464#1,176(<rp=int64#4)
-# asm 2: movdqa <0r11=%xmm0,176(<rp=%rcx)
-movdqa %xmm0,176(%rcx)
+# asm 2: movdqa <0r11=%xmm0,176(<rp=RCX)
+movdqa %xmm0,176(RCX)
 
 # qhasm: int6464 0round
 
@@ -3131,63 +3132,63 @@ movdqa %xmm0,176(%rcx)
 
 # qhasm: r0 = *(int128 *)(rp + 0)
 # asm 1: movdqa 0(<rp=int64#4),>r0=int6464#1
-# asm 2: movdqa 0(<rp=%rcx),>r0=%xmm0
-movdqa 0(%rcx),%xmm0
+# asm 2: movdqa 0(<rp=RCX),>r0=%xmm0
+movdqa 0(RCX),%xmm0
 
 # qhasm: r1 = *(int128 *)(rp + 16)
 # asm 1: movdqa 16(<rp=int64#4),>r1=int6464#2
-# asm 2: movdqa 16(<rp=%rcx),>r1=%xmm1
-movdqa 16(%rcx),%xmm1
+# asm 2: movdqa 16(<rp=RCX),>r1=%xmm1
+movdqa 16(RCX),%xmm1
 
 # qhasm: r2 = *(int128 *)(rp + 32)
 # asm 1: movdqa 32(<rp=int64#4),>r2=int6464#3
-# asm 2: movdqa 32(<rp=%rcx),>r2=%xmm2
-movdqa 32(%rcx),%xmm2
+# asm 2: movdqa 32(<rp=RCX),>r2=%xmm2
+movdqa 32(RCX),%xmm2
 
 # qhasm: r3 = *(int128 *)(rp + 48)
 # asm 1: movdqa 48(<rp=int64#4),>r3=int6464#4
-# asm 2: movdqa 48(<rp=%rcx),>r3=%xmm3
-movdqa 48(%rcx),%xmm3
+# asm 2: movdqa 48(<rp=RCX),>r3=%xmm3
+movdqa 48(RCX),%xmm3
 
 # qhasm: r4 = *(int128 *)(rp + 64)
 # asm 1: movdqa 64(<rp=int64#4),>r4=int6464#5
-# asm 2: movdqa 64(<rp=%rcx),>r4=%xmm4
-movdqa 64(%rcx),%xmm4
+# asm 2: movdqa 64(<rp=RCX),>r4=%xmm4
+movdqa 64(RCX),%xmm4
 
 # qhasm: r5 = *(int128 *)(rp + 80)
 # asm 1: movdqa 80(<rp=int64#4),>r5=int6464#6
-# asm 2: movdqa 80(<rp=%rcx),>r5=%xmm5
-movdqa 80(%rcx),%xmm5
+# asm 2: movdqa 80(<rp=RCX),>r5=%xmm5
+movdqa 80(RCX),%xmm5
 
 # qhasm: r6 = *(int128 *)(rp + 96)
 # asm 1: movdqa 96(<rp=int64#4),>r6=int6464#7
-# asm 2: movdqa 96(<rp=%rcx),>r6=%xmm6
-movdqa 96(%rcx),%xmm6
+# asm 2: movdqa 96(<rp=RCX),>r6=%xmm6
+movdqa 96(RCX),%xmm6
 
 # qhasm: r7 = *(int128 *)(rp + 112)
 # asm 1: movdqa 112(<rp=int64#4),>r7=int6464#8
-# asm 2: movdqa 112(<rp=%rcx),>r7=%xmm7
-movdqa 112(%rcx),%xmm7
+# asm 2: movdqa 112(<rp=RCX),>r7=%xmm7
+movdqa 112(RCX),%xmm7
 
 # qhasm: r8 = *(int128 *)(rp + 128)
 # asm 1: movdqa 128(<rp=int64#4),>r8=int6464#9
-# asm 2: movdqa 128(<rp=%rcx),>r8=%xmm8
-movdqa 128(%rcx),%xmm8
+# asm 2: movdqa 128(<rp=RCX),>r8=%xmm8
+movdqa 128(RCX),%xmm8
 
 # qhasm: r9 = *(int128 *)(rp + 144)
 # asm 1: movdqa 144(<rp=int64#4),>r9=int6464#10
-# asm 2: movdqa 144(<rp=%rcx),>r9=%xmm9
-movdqa 144(%rcx),%xmm9
+# asm 2: movdqa 144(<rp=RCX),>r9=%xmm9
+movdqa 144(RCX),%xmm9
 
 # qhasm: r10 = *(int128 *)(rp + 160)
 # asm 1: movdqa 160(<rp=int64#4),>r10=int6464#11
-# asm 2: movdqa 160(<rp=%rcx),>r10=%xmm10
-movdqa 160(%rcx),%xmm10
+# asm 2: movdqa 160(<rp=RCX),>r10=%xmm10
+movdqa 160(RCX),%xmm10
 
 # qhasm: r11 = *(int128 *)(rp + 176)
 # asm 1: movdqa 176(<rp=int64#4),>r11=int6464#12
-# asm 2: movdqa 176(<rp=%rcx),>r11=%xmm11
-movdqa 176(%rcx),%xmm11
+# asm 2: movdqa 176(<rp=RCX),>r11=%xmm11
+movdqa 176(RCX),%xmm11
 
 # qhasm: 0round = ROUND_ROUND
 # asm 1: movdqa ROUND_ROUND,<0round=int6464#13
@@ -3781,66 +3782,66 @@ subpd %xmm13,%xmm10
 
 # qhasm: *(int128 *)(rop +   0) =  r0
 # asm 1: movdqa <r0=int6464#1,0(<rop=int64#1)
-# asm 2: movdqa <r0=%xmm0,0(<rop=%rdi)
-movdqa %xmm0,0(%rdi)
+# asm 2: movdqa <r0=%xmm0,0(<rop=RDI)
+movdqa %xmm0,0(RDI)
 
 # qhasm: *(int128 *)(rop +  16) =  r1
 # asm 1: movdqa <r1=int6464#2,16(<rop=int64#1)
-# asm 2: movdqa <r1=%xmm1,16(<rop=%rdi)
-movdqa %xmm1,16(%rdi)
+# asm 2: movdqa <r1=%xmm1,16(<rop=RDI)
+movdqa %xmm1,16(RDI)
 
 # qhasm: *(int128 *)(rop +  32) =  r2
 # asm 1: movdqa <r2=int6464#3,32(<rop=int64#1)
-# asm 2: movdqa <r2=%xmm2,32(<rop=%rdi)
-movdqa %xmm2,32(%rdi)
+# asm 2: movdqa <r2=%xmm2,32(<rop=RDI)
+movdqa %xmm2,32(RDI)
 
 # qhasm: *(int128 *)(rop +  48) =  r3
 # asm 1: movdqa <r3=int6464#4,48(<rop=int64#1)
-# asm 2: movdqa <r3=%xmm3,48(<rop=%rdi)
-movdqa %xmm3,48(%rdi)
+# asm 2: movdqa <r3=%xmm3,48(<rop=RDI)
+movdqa %xmm3,48(RDI)
 
 # qhasm: *(int128 *)(rop +  64) =  r4
 # asm 1: movdqa <r4=int6464#5,64(<rop=int64#1)
-# asm 2: movdqa <r4=%xmm4,64(<rop=%rdi)
-movdqa %xmm4,64(%rdi)
+# asm 2: movdqa <r4=%xmm4,64(<rop=RDI)
+movdqa %xmm4,64(RDI)
 
 # qhasm: *(int128 *)(rop +  80) =  r5
 # asm 1: movdqa <r5=int6464#6,80(<rop=int64#1)
-# asm 2: movdqa <r5=%xmm5,80(<rop=%rdi)
-movdqa %xmm5,80(%rdi)
+# asm 2: movdqa <r5=%xmm5,80(<rop=RDI)
+movdqa %xmm5,80(RDI)
 
 # qhasm: *(int128 *)(rop +  96) =  r6
 # asm 1: movdqa <r6=int6464#7,96(<rop=int64#1)
-# asm 2: movdqa <r6=%xmm6,96(<rop=%rdi)
-movdqa %xmm6,96(%rdi)
+# asm 2: movdqa <r6=%xmm6,96(<rop=RDI)
+movdqa %xmm6,96(RDI)
 
 # qhasm: *(int128 *)(rop + 112) =  r7
 # asm 1: movdqa <r7=int6464#8,112(<rop=int64#1)
-# asm 2: movdqa <r7=%xmm7,112(<rop=%rdi)
-movdqa %xmm7,112(%rdi)
+# asm 2: movdqa <r7=%xmm7,112(<rop=RDI)
+movdqa %xmm7,112(RDI)
 
 # qhasm: *(int128 *)(rop + 128) =  r8
 # asm 1: movdqa <r8=int6464#9,128(<rop=int64#1)
-# asm 2: movdqa <r8=%xmm8,128(<rop=%rdi)
-movdqa %xmm8,128(%rdi)
+# asm 2: movdqa <r8=%xmm8,128(<rop=RDI)
+movdqa %xmm8,128(RDI)
 
 # qhasm: *(int128 *)(rop + 144) =  r9
 # asm 1: movdqa <r9=int6464#10,144(<rop=int64#1)
-# asm 2: movdqa <r9=%xmm9,144(<rop=%rdi)
-movdqa %xmm9,144(%rdi)
+# asm 2: movdqa <r9=%xmm9,144(<rop=RDI)
+movdqa %xmm9,144(RDI)
 
 # qhasm: *(int128 *)(rop + 160) = r10
 # asm 1: movdqa <r10=int6464#11,160(<rop=int64#1)
-# asm 2: movdqa <r10=%xmm10,160(<rop=%rdi)
-movdqa %xmm10,160(%rdi)
+# asm 2: movdqa <r10=%xmm10,160(<rop=RDI)
+movdqa %xmm10,160(RDI)
 
 # qhasm: *(int128 *)(rop + 176) = r11
 # asm 1: movdqa <r11=int6464#12,176(<rop=int64#1)
-# asm 2: movdqa <r11=%xmm11,176(<rop=%rdi)
-movdqa %xmm11,176(%rdi)
+# asm 2: movdqa <r11=%xmm11,176(<rop=RDI)
+movdqa %xmm11,176(RDI)
 
 # qhasm: leave
 add %r11,%rsp
-mov %rdi,%rax
-mov %rsi,%rdx
+mov RDI,%rax
+mov RSI,RDX
 ret
