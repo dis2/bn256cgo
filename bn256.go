@@ -1,15 +1,11 @@
 /*
 Package bn256 is an optimized implementation of BN-256 for amd64.
 
-It should be about 10x faster than the pure-Go version when run on an amd64
-based system. It wraps a patched version of
-http://cryptojedi.org/crypto/#dclxvi.
-
-See the original package for documentation.
-
-[1] http://cryptojedi.org/papers/dclxvi-20100714.pdf
+This is a modified version of https://godoc.org/vuvuzela.io/crypto/bn256
+adding support for windows and automatic CPU detection - so that we revert
+to C if needed, which is still about 50% faster than pure Go.
 */
-package bn256 // import "vuvuzela.io/crypto/bn256"
+package bn256 // import "github.com/dis2/bn256"
 
 import (
 	"crypto/rand"
