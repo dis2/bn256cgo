@@ -8,6 +8,8 @@
 #define RCX %rcx
 #define R8 %r8
 #define R9 %r9
+#define WINPUSH
+#define WINPOP
 #else
 // Microsoft
 #define RDI %rcx
