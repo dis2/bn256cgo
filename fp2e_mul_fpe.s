@@ -10,7 +10,6 @@
 .globl fp2e_mul_fpe_qhasm
 _fp2e_mul_fpe_qhasm:
 fp2e_mul_fpe_qhasm:
-push %rbp
 mov %rsp,%r11
 and $31,%r11
 add $768,%r11
@@ -584,8 +583,7 @@ movdqa %xmm1,%xmm12
 # qhasm: float6464 0ab1six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab1six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab1six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t1 = 0ab1
 # asm 1: movdqa <0ab1=int6464#2,>0t1=int6464#14
@@ -785,8 +783,7 @@ movdqa %xmm2,%xmm12
 # qhasm: float6464 0ab2six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab2six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab2six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t2 = 0ab2
 # asm 1: movdqa <0ab2=int6464#3,>0t2=int6464#14
@@ -986,8 +983,7 @@ movdqa %xmm3,%xmm12
 # qhasm: float6464 0ab3six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab3six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab3six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t3 = 0ab3
 # asm 1: movdqa <0ab3=int6464#4,>0t3=int6464#14
@@ -1187,8 +1183,7 @@ movdqa %xmm4,%xmm12
 # qhasm: float6464 0ab4six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab4six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab4six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t4 = 0ab4
 # asm 1: movdqa <0ab4=int6464#5,>0t4=int6464#14
@@ -1388,8 +1383,7 @@ movdqa %xmm5,%xmm12
 # qhasm: float6464 0ab5six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab5six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab5six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t5 = 0ab5
 # asm 1: movdqa <0ab5=int6464#6,>0t5=int6464#14
@@ -1779,8 +1773,7 @@ movdqa %xmm7,%xmm12
 # qhasm: float6464 0ab7six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab7six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab7six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t7 = 0ab7
 # asm 1: movdqa <0ab7=int6464#8,>0t7=int6464#14
@@ -1980,8 +1973,7 @@ movdqa %xmm8,%xmm12
 # qhasm: float6464 0ab8six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab8six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab8six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t8 = 0ab8
 # asm 1: movdqa <0ab8=int6464#9,>0t8=int6464#14
@@ -2181,8 +2173,7 @@ movdqa %xmm9,%xmm12
 # qhasm: float6464 0ab9six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab9six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab9six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t9 = 0ab9
 # asm 1: movdqa <0ab9=int6464#10,>0t9=int6464#14
@@ -2382,8 +2373,7 @@ movdqa %xmm10,%xmm12
 # qhasm: float6464 0ab10six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab10six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab10six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t10 = 0ab10
 # asm 1: movdqa <0ab10=int6464#11,>0t10=int6464#14
@@ -2583,8 +2573,7 @@ movdqa %xmm11,%xmm12
 # qhasm: float6464 0ab11six *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<0ab11six=int6464#13
 # asm 2: mulpd SIX_SIX,<0ab11six=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: 0t11 = 0ab11
 # asm 1: movdqa <0ab11=int6464#12,>0t11=int6464#14
@@ -2859,8 +2848,7 @@ movdqa %xmm4,%xmm12
 # qhasm: float6464 2t15 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t15=int6464#13
 # asm 2: mulpd SIX_SIX,<2t15=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: float6464 1r0 += 2t15
 # asm 1: addpd <2t15=int6464#13,<1r0=int6464#1
@@ -2875,8 +2863,7 @@ movdqa %xmm7,%xmm12
 # qhasm: float6464 2t18 *= TWO_TWO
 # asm 1: mulpd TWO_TWO,<2t18=int6464#13
 # asm 2: mulpd TWO_TWO,<2t18=%xmm12
-mov TWO_TWO@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd TWO_TWO,%xmm12
 
 # qhasm: float6464 1r0 -= 2t18
 # asm 1: subpd <2t18=int6464#13,<1r0=int6464#1
@@ -2891,8 +2878,7 @@ movdqa %xmm10,%xmm12
 # qhasm: float6464 2t21 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t21=int6464#13
 # asm 2: mulpd SIX_SIX,<2t21=%xmm12
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd SIX_SIX,%xmm12
 
 # qhasm: float6464 1r0 -= 2t21
 # asm 1: subpd <2t21=int6464#13,<1r0=int6464#1
@@ -2922,8 +2908,7 @@ movdqa %xmm4,%xmm12
 # qhasm: float6464 2t15 *= FIVE_FIVE
 # asm 1: mulpd FIVE_FIVE,<2t15=int6464#13
 # asm 2: mulpd FIVE_FIVE,<2t15=%xmm12
-mov FIVE_FIVE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd FIVE_FIVE,%xmm12
 
 # qhasm: float6464 1r3 += 2t15
 # asm 1: addpd <2t15=int6464#13,<1r3=int6464#1
@@ -2943,8 +2928,7 @@ movdqa %xmm10,%xmm12
 # qhasm: float6464 2t21 *= EIGHT_EIGHT
 # asm 1: mulpd EIGHT_EIGHT,<2t21=int6464#13
 # asm 2: mulpd EIGHT_EIGHT,<2t21=%xmm12
-mov EIGHT_EIGHT@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd EIGHT_EIGHT,%xmm12
 
 # qhasm: float6464 1r3 -= 2t21
 # asm 1: subpd <2t21=int6464#13,<1r3=int6464#1
@@ -2969,8 +2953,7 @@ movdqa %xmm1,%xmm12
 # qhasm: float6464 2t12 *= FOUR_FOUR
 # asm 1: mulpd FOUR_FOUR,<2t12=int6464#13
 # asm 2: mulpd FOUR_FOUR,<2t12=%xmm12
-mov FOUR_FOUR@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd FOUR_FOUR,%xmm12
 
 # qhasm: float6464 1r6 -= 2t12
 # asm 1: subpd <2t12=int6464#13,<1r6=int6464#1
@@ -2985,8 +2968,7 @@ movdqa %xmm4,%xmm12
 # qhasm: float6464 2t15 *= EIGHTEEN_EIGHTEEN
 # asm 1: mulpd EIGHTEEN_EIGHTEEN,<2t15=int6464#13
 # asm 2: mulpd EIGHTEEN_EIGHTEEN,<2t15=%xmm12
-mov EIGHTEEN_EIGHTEEN@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd EIGHTEEN_EIGHTEEN,%xmm12
 
 # qhasm: float6464 1r6 += 2t15
 # asm 1: addpd <2t15=int6464#13,<1r6=int6464#1
@@ -3001,8 +2983,7 @@ movdqa %xmm7,%xmm12
 # qhasm: float6464 2t18 *= THREE_THREE
 # asm 1: mulpd THREE_THREE,<2t18=int6464#13
 # asm 2: mulpd THREE_THREE,<2t18=%xmm12
-mov THREE_THREE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd THREE_THREE,%xmm12
 
 # qhasm: float6464 1r6 -= 2t18
 # asm 1: subpd <2t18=int6464#13,<1r6=int6464#1
@@ -3017,8 +2998,7 @@ movdqa %xmm10,%xmm12
 # qhasm: float6464 2t21 *= THIRTY_THIRTY
 # asm 1: mulpd THIRTY_THIRTY,<2t21=int6464#13
 # asm 2: mulpd THIRTY_THIRTY,<2t21=%xmm12
-mov THIRTY_THIRTY@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm12
+mulpd THIRTY_THIRTY,%xmm12
 
 # qhasm: float6464 1r6 -= 2t21
 # asm 1: subpd <2t21=int6464#13,<1r6=int6464#1
@@ -3048,8 +3028,7 @@ movdqa %xmm4,%xmm1
 # qhasm: float6464 2t15 *= TWO_TWO
 # asm 1: mulpd TWO_TWO,<2t15=int6464#2
 # asm 2: mulpd TWO_TWO,<2t15=%xmm1
-mov TWO_TWO@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd TWO_TWO,%xmm1
 
 # qhasm: float6464 1r9 += 2t15
 # asm 1: addpd <2t15=int6464#2,<1r9=int6464#1
@@ -3069,8 +3048,7 @@ movdqa %xmm10,%xmm1
 # qhasm: float6464 2t21 *= NINE_NINE
 # asm 1: mulpd NINE_NINE,<2t21=int6464#2
 # asm 2: mulpd NINE_NINE,<2t21=%xmm1
-mov NINE_NINE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd NINE_NINE,%xmm1
 
 # qhasm: float6464 1r9 -= 2t21
 # asm 1: subpd <2t21=int6464#2,<1r9=int6464#1
@@ -3105,8 +3083,7 @@ movdqa %xmm8,%xmm1
 # qhasm: float6464 2t19 *= TWO_TWO
 # asm 1: mulpd TWO_TWO,<2t19=int6464#2
 # asm 2: mulpd TWO_TWO,<2t19=%xmm1
-mov TWO_TWO@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd TWO_TWO,%xmm1
 
 # qhasm: float6464 1r1 -= 2t19
 # asm 1: subpd <2t19=int6464#2,<1r1=int6464#1
@@ -3136,8 +3113,7 @@ movdqa %xmm2,%xmm1
 # qhasm: float6464 2t13 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t13=int6464#2
 # asm 2: mulpd SIX_SIX,<2t13=%xmm1
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd SIX_SIX,%xmm1
 
 # qhasm: float6464 1r4 -= 2t13
 # asm 1: subpd <2t13=int6464#2,<1r4=int6464#1
@@ -3152,8 +3128,7 @@ movdqa %xmm5,%xmm1
 # qhasm: float6464 2t16 *= FIVE_FIVE
 # asm 1: mulpd FIVE_FIVE,<2t16=int6464#2
 # asm 2: mulpd FIVE_FIVE,<2t16=%xmm1
-mov FIVE_FIVE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd FIVE_FIVE,%xmm1
 
 # qhasm: float6464 1r4 += 2t16
 # asm 1: addpd <2t16=int6464#2,<1r4=int6464#1
@@ -3168,8 +3143,7 @@ movdqa %xmm8,%xmm1
 # qhasm: float6464 2t19 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t19=int6464#2
 # asm 2: mulpd SIX_SIX,<2t19=%xmm1
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd SIX_SIX,%xmm1
 
 # qhasm: float6464 1r4 -= 2t19
 # asm 1: subpd <2t19=int6464#2,<1r4=int6464#1
@@ -3184,8 +3158,7 @@ movdqa %xmm11,%xmm1
 # qhasm: float6464 2t22 *= EIGHT_EIGHT
 # asm 1: mulpd EIGHT_EIGHT,<2t22=int6464#2
 # asm 2: mulpd EIGHT_EIGHT,<2t22=%xmm1
-mov EIGHT_EIGHT@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd EIGHT_EIGHT,%xmm1
 
 # qhasm: float6464 1r4 -= 2t22
 # asm 1: subpd <2t22=int6464#2,<1r4=int6464#1
@@ -3210,8 +3183,7 @@ movdqa %xmm2,%xmm1
 # qhasm: float6464 2t13 *= FOUR_FOUR
 # asm 1: mulpd FOUR_FOUR,<2t13=int6464#2
 # asm 2: mulpd FOUR_FOUR,<2t13=%xmm1
-mov FOUR_FOUR@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd FOUR_FOUR,%xmm1
 
 # qhasm: float6464 1r7 -= 2t13
 # asm 1: subpd <2t13=int6464#2,<1r7=int6464#1
@@ -3226,8 +3198,7 @@ movdqa %xmm5,%xmm1
 # qhasm: float6464 2t16 *= THREE_THREE
 # asm 1: mulpd THREE_THREE,<2t16=int6464#2
 # asm 2: mulpd THREE_THREE,<2t16=%xmm1
-mov THREE_THREE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd THREE_THREE,%xmm1
 
 # qhasm: float6464 1r7 += 2t16
 # asm 1: addpd <2t16=int6464#2,<1r7=int6464#1
@@ -3242,8 +3213,7 @@ movdqa %xmm8,%xmm1
 # qhasm: float6464 2t19 *= THREE_THREE
 # asm 1: mulpd THREE_THREE,<2t19=int6464#2
 # asm 2: mulpd THREE_THREE,<2t19=%xmm1
-mov THREE_THREE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd THREE_THREE,%xmm1
 
 # qhasm: float6464 1r7 -= 2t19
 # asm 1: subpd <2t19=int6464#2,<1r7=int6464#1
@@ -3258,8 +3228,7 @@ movdqa %xmm11,%xmm1
 # qhasm: float6464 2t22 *= FIVE_FIVE
 # asm 1: mulpd FIVE_FIVE,<2t22=int6464#2
 # asm 2: mulpd FIVE_FIVE,<2t22=%xmm1
-mov FIVE_FIVE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd FIVE_FIVE,%xmm1
 
 # qhasm: float6464 1r7 -= 2t22
 # asm 1: subpd <2t22=int6464#2,<1r7=int6464#1
@@ -3284,8 +3253,7 @@ movdqa %xmm2,%xmm1
 # qhasm: float6464 2t13 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t13=int6464#2
 # asm 2: mulpd SIX_SIX,<2t13=%xmm1
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd SIX_SIX,%xmm1
 
 # qhasm: float6464 1r10 -= 2t13
 # asm 1: subpd <2t13=int6464#2,<1r10=int6464#1
@@ -3300,8 +3268,7 @@ movdqa %xmm5,%xmm1
 # qhasm: float6464 2t16 *= TWO_TWO
 # asm 1: mulpd TWO_TWO,<2t16=int6464#2
 # asm 2: mulpd TWO_TWO,<2t16=%xmm1
-mov TWO_TWO@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd TWO_TWO,%xmm1
 
 # qhasm: float6464 1r10 += 2t16
 # asm 1: addpd <2t16=int6464#2,<1r10=int6464#1
@@ -3316,8 +3283,7 @@ movdqa %xmm8,%xmm1
 # qhasm: float6464 2t19 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t19=int6464#2
 # asm 2: mulpd SIX_SIX,<2t19=%xmm1
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd SIX_SIX,%xmm1
 
 # qhasm: float6464 1r10 += 2t19
 # asm 1: addpd <2t19=int6464#2,<1r10=int6464#1
@@ -3332,8 +3298,7 @@ movdqa %xmm11,%xmm1
 # qhasm: float6464 2t22 *= NINE_NINE
 # asm 1: mulpd NINE_NINE,<2t22=int6464#2
 # asm 2: mulpd NINE_NINE,<2t22=%xmm1
-mov NINE_NINE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd NINE_NINE,%xmm1
 
 # qhasm: float6464 1r10 -= 2t22
 # asm 1: subpd <2t22=int6464#2,<1r10=int6464#1
@@ -3368,8 +3333,7 @@ movdqa %xmm9,%xmm1
 # qhasm: float6464 2t20 *= TWO_TWO
 # asm 1: mulpd TWO_TWO,<2t20=int6464#2
 # asm 2: mulpd TWO_TWO,<2t20=%xmm1
-mov TWO_TWO@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd TWO_TWO,%xmm1
 
 # qhasm: float6464 1r2 -= 2t20
 # asm 1: subpd <2t20=int6464#2,<1r2=int6464#1
@@ -3394,8 +3358,7 @@ movdqa %xmm3,%xmm1
 # qhasm: float6464 2t14 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t14=int6464#2
 # asm 2: mulpd SIX_SIX,<2t14=%xmm1
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd SIX_SIX,%xmm1
 
 # qhasm: float6464 1r5 -= 2t14
 # asm 1: subpd <2t14=int6464#2,<1r5=int6464#1
@@ -3410,8 +3373,7 @@ movdqa %xmm6,%xmm1
 # qhasm: float6464 2t17 *= FIVE_FIVE
 # asm 1: mulpd FIVE_FIVE,<2t17=int6464#2
 # asm 2: mulpd FIVE_FIVE,<2t17=%xmm1
-mov FIVE_FIVE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd FIVE_FIVE,%xmm1
 
 # qhasm: float6464 1r5 += 2t17
 # asm 1: addpd <2t17=int6464#2,<1r5=int6464#1
@@ -3426,8 +3388,7 @@ movdqa %xmm9,%xmm1
 # qhasm: float6464 2t20 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t20=int6464#2
 # asm 2: mulpd SIX_SIX,<2t20=%xmm1
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd SIX_SIX,%xmm1
 
 # qhasm: float6464 1r5 -= 2t20
 # asm 1: subpd <2t20=int6464#2,<1r5=int6464#1
@@ -3452,8 +3413,7 @@ movdqa %xmm3,%xmm1
 # qhasm: float6464 2t14 *= FOUR_FOUR
 # asm 1: mulpd FOUR_FOUR,<2t14=int6464#2
 # asm 2: mulpd FOUR_FOUR,<2t14=%xmm1
-mov FOUR_FOUR@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd FOUR_FOUR,%xmm1
 
 # qhasm: float6464 1r8 -= 2t14
 # asm 1: subpd <2t14=int6464#2,<1r8=int6464#1
@@ -3468,8 +3428,7 @@ movdqa %xmm6,%xmm1
 # qhasm: float6464 2t17 *= THREE_THREE
 # asm 1: mulpd THREE_THREE,<2t17=int6464#2
 # asm 2: mulpd THREE_THREE,<2t17=%xmm1
-mov THREE_THREE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd THREE_THREE,%xmm1
 
 # qhasm: float6464 1r8 += 2t17
 # asm 1: addpd <2t17=int6464#2,<1r8=int6464#1
@@ -3484,8 +3443,7 @@ movdqa %xmm9,%xmm1
 # qhasm: float6464 2t20 *= THREE_THREE
 # asm 1: mulpd THREE_THREE,<2t20=int6464#2
 # asm 2: mulpd THREE_THREE,<2t20=%xmm1
-mov THREE_THREE@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd THREE_THREE,%xmm1
 
 # qhasm: float6464 1r8 -= 2t20
 # asm 1: subpd <2t20=int6464#2,<1r8=int6464#1
@@ -3510,8 +3468,7 @@ movdqa %xmm3,%xmm1
 # qhasm: float6464 2t14 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t14=int6464#2
 # asm 2: mulpd SIX_SIX,<2t14=%xmm1
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd SIX_SIX,%xmm1
 
 # qhasm: float6464 1r11 -= 2t14
 # asm 1: subpd <2t14=int6464#2,<1r11=int6464#1
@@ -3526,8 +3483,7 @@ movdqa %xmm6,%xmm1
 # qhasm: float6464 2t17 *= TWO_TWO
 # asm 1: mulpd TWO_TWO,<2t17=int6464#2
 # asm 2: mulpd TWO_TWO,<2t17=%xmm1
-mov TWO_TWO@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd TWO_TWO,%xmm1
 
 # qhasm: float6464 1r11 += 2t17
 # asm 1: addpd <2t17=int6464#2,<1r11=int6464#1
@@ -3542,8 +3498,7 @@ movdqa %xmm9,%xmm1
 # qhasm: float6464 2t20 *= SIX_SIX
 # asm 1: mulpd SIX_SIX,<2t20=int6464#2
 # asm 2: mulpd SIX_SIX,<2t20=%xmm1
-mov SIX_SIX@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm1
+mulpd SIX_SIX,%xmm1
 
 # qhasm: float6464 1r11 += 2t20
 # asm 1: addpd <2t20=int6464#2,<1r11=int6464#1
@@ -3624,8 +3579,7 @@ movdqa 176(%rcx),%xmm11
 # qhasm: 0round = ROUND_ROUND
 # asm 1: movdqa ROUND_ROUND,<0round=int6464#13
 # asm 2: movdqa ROUND_ROUND,<0round=%xmm12
-mov ROUND_ROUND@GOTPCREL(%rip), %rbp
-movdqa (%rbp),%xmm12
+movdqa ROUND_ROUND,%xmm12
 
 # qhasm: 0carry = r1
 # asm 1: movdqa <r1=int6464#2,>0carry=int6464#14
@@ -3635,8 +3589,7 @@ movdqa %xmm1,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -3656,8 +3609,7 @@ addpd %xmm13,%xmm2
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r1 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r1=int6464#2
@@ -3672,8 +3624,7 @@ movdqa %xmm4,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -3693,8 +3644,7 @@ addpd %xmm13,%xmm5
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r4 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r4=int6464#5
@@ -3709,8 +3659,7 @@ movdqa %xmm7,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -3730,8 +3679,7 @@ addpd %xmm13,%xmm8
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r7 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r7=int6464#8
@@ -3746,8 +3694,7 @@ movdqa %xmm10,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -3767,8 +3714,7 @@ addpd %xmm13,%xmm11
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r10 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r10=int6464#11
@@ -3783,8 +3729,7 @@ movdqa %xmm2,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -3804,8 +3749,7 @@ addpd %xmm13,%xmm3
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r2 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r2=int6464#3
@@ -3820,8 +3764,7 @@ movdqa %xmm5,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -3841,8 +3784,7 @@ addpd %xmm13,%xmm6
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r5 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r5=int6464#6
@@ -3857,8 +3799,7 @@ movdqa %xmm8,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -3878,8 +3819,7 @@ addpd %xmm13,%xmm9
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r8 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r8=int6464#9
@@ -3894,8 +3834,7 @@ movdqa %xmm11,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -3925,8 +3864,7 @@ movdqa %xmm13,%xmm14
 # qhasm: float6464 2t6 *= FOUR_FOUR
 # asm 1: mulpd FOUR_FOUR,<2t6=int6464#15
 # asm 2: mulpd FOUR_FOUR,<2t6=%xmm14
-mov FOUR_FOUR@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm14
+mulpd FOUR_FOUR,%xmm14
 
 # qhasm: float6464 r6 -= 2t6
 # asm 1: subpd <2t6=int6464#15,<r6=int6464#7
@@ -3941,8 +3879,7 @@ subpd %xmm13,%xmm9
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r11 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r11=int6464#12
@@ -3957,8 +3894,7 @@ movdqa %xmm0,%xmm13
 # qhasm: float6464 0carry *= V6INV_V6INV
 # asm 1: mulpd V6INV_V6INV,<0carry=int6464#14
 # asm 2: mulpd V6INV_V6INV,<0carry=%xmm13
-mov V6INV_V6INV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V6INV_V6INV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -3978,8 +3914,7 @@ addpd %xmm13,%xmm1
 # qhasm: float6464 0carry *= V6_V6
 # asm 1: mulpd V6_V6,<0carry=int6464#14
 # asm 2: mulpd V6_V6,<0carry=%xmm13
-mov V6_V6@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V6_V6,%xmm13
 
 # qhasm: float6464 r0 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r0=int6464#1
@@ -3994,8 +3929,7 @@ movdqa %xmm3,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -4015,8 +3949,7 @@ addpd %xmm13,%xmm4
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r3 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r3=int6464#4
@@ -4031,8 +3964,7 @@ movdqa %xmm6,%xmm13
 # qhasm: float6464 0carry *= V6INV_V6INV
 # asm 1: mulpd V6INV_V6INV,<0carry=int6464#14
 # asm 2: mulpd V6INV_V6INV,<0carry=%xmm13
-mov V6INV_V6INV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V6INV_V6INV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -4052,8 +3984,7 @@ addpd %xmm13,%xmm7
 # qhasm: float6464 0carry *= V6_V6
 # asm 1: mulpd V6_V6,<0carry=int6464#14
 # asm 2: mulpd V6_V6,<0carry=%xmm13
-mov V6_V6@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V6_V6,%xmm13
 
 # qhasm: float6464 r6 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r6=int6464#7
@@ -4068,8 +3999,7 @@ movdqa %xmm9,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -4089,8 +4019,7 @@ addpd %xmm13,%xmm10
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r9 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r9=int6464#10
@@ -4105,8 +4034,7 @@ movdqa %xmm1,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -4126,8 +4054,7 @@ addpd %xmm13,%xmm2
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r1 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r1=int6464#2
@@ -4142,8 +4069,7 @@ movdqa %xmm4,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -4163,8 +4089,7 @@ addpd %xmm13,%xmm5
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r4 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r4=int6464#5
@@ -4179,8 +4104,7 @@ movdqa %xmm7,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -4200,8 +4124,7 @@ addpd %xmm13,%xmm8
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r7 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r7=int6464#8
@@ -4216,8 +4139,7 @@ movdqa %xmm10,%xmm13
 # qhasm: float6464 0carry *= VINV_VINV
 # asm 1: mulpd VINV_VINV,<0carry=int6464#14
 # asm 2: mulpd VINV_VINV,<0carry=%xmm13
-mov VINV_VINV@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd VINV_VINV,%xmm13
 
 # qhasm: float6464 0carry += 0round
 # asm 1: addpd <0round=int6464#13,<0carry=int6464#14
@@ -4237,8 +4159,7 @@ addpd %xmm13,%xmm11
 # qhasm: float6464 0carry *= V_V
 # asm 1: mulpd V_V,<0carry=int6464#14
 # asm 2: mulpd V_V,<0carry=%xmm13
-mov V_V@GOTPCREL(%rip), %rbp
-mulpd (%rbp),%xmm13
+mulpd V_V,%xmm13
 
 # qhasm: float6464 r10 -= 0carry
 # asm 1: subpd <0carry=int6464#14,<r10=int6464#11
@@ -4309,5 +4230,4 @@ movdqa %xmm11,176(%rdi)
 add %r11,%rsp
 mov %rdi,%rax
 mov %rsi,%rdx
-pop %rbp
 ret
